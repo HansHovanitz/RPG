@@ -25,49 +25,6 @@ public class ItemsEquipment
 				equipmentListRemovalHelper(item);
 			}
 
-
-
-
-
-
-
-
-
-		//	if (item.equals("addSword"))
-		//	{
-		//		equipmentList.add("Sword");
-		//	}
-		//	if (item.equals("removeSword"))
-		//	{
-		//		equipmentListRemovalHelper("Sword");
-		//	}
-		//	if (item.equals("addShield"))
-		//	{
-		//		equipmentList.add("Shield");
-		//	}
-		//	if (item.equals("removeSword"))
-		//	{
-		//		equipmentListRemovalHelper("Shield");
-		//	}
-		//	if (item.equals("addLeatherArmor"))
-		//	{
-		//		equipmentList.add("Leather Armor");
-		//	}
-		//	if (item.equals("removeLeatherArmor"))
-		//	{
-		//		equipmentListRemovalHelper("Leather Armor");
-		//	}
-		//	if (item.equals("addHammer"))
-		//	{
-		//		equipmentList.add("Hammer");
-		//	}
-		//	if (item.equals("removeHammer"))
-		//	{
-		//		equipmentListRemovalHelper("Hammer");
-		//	}
-
-
-
 			//add/remove eq here.   Have another method that goes thru list and prints it and another than goes thru and finds something.  If have already, then no allow to be added again (bought)
 			//also need to remove it.  Write these out i think haha.
 		}
@@ -179,7 +136,7 @@ public class ItemsEquipment
 			{
 				if (row == 5 && column == 0)
 				{
-					player.equipment.plateArmor("yes");
+					//player.equipment.plateArmor("yes");
 				}
 			}		
 		}
@@ -302,7 +259,7 @@ public class ItemsEquipment
 			}
 			if (item.equals("no"))
 			{
-				player.setArmor(player.getArmor() + 8);
+				player.setArmor(player.getArmor() - 8);
 				equipmentList("Plate Armor", "remove");
 				playerResist("no");
 			}

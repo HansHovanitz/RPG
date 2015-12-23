@@ -4,17 +4,11 @@ public class Space_Terrain extends Creature implements MapSpaces
 {
 	protected int terrainNumber;
 	protected boolean mountainSwitch;
-	
-	//protected int row;
-	//protected int column;
-	//private int healer;
 
 	public Space_Terrain()
 	{
 		super("Terrain", 0, 0, 0);
 		this.mountainSwitch = false;
-		
-		//this.terrainNumber = terrainNumber;
 	}
 
 	public int getTerrainNumber()
@@ -27,27 +21,14 @@ public class Space_Terrain extends Creature implements MapSpaces
 		this.terrainNumber = terrainNumber;
 	}
 
-
-
-
-
 	public Creature doAction(int row, int column, PlayerCharacter player, PlayerMovement movement, Scanner scan)
 	{
 		Space_Terrain terrain = new Space_Terrain();
-		
-		//Description description = new Description();
-		
-		//Scanner scan = new Scanner(System.in);
-
-
-
 		
 		if ((row == 4 && column == 4) || (row == 4 && column == 5))
 		{
 			System.out.println("As you approach the fiery river you succumb to the intense heat...");
 
-			
-			
 			for (int i = 0; i < 5; i++)
 			{
 				System.out.print(".  ");
@@ -63,10 +44,9 @@ public class Space_Terrain extends Creature implements MapSpaces
 				}
 			}
 			
-			
 			if (player.getHp() >= 5)
 			{
-				System.out.println("\nAs you regain some semblance of consciousness you find yourself in a healer's hut");
+				System.out.println("\nAs you regain some semblance of consciousness you find yourself in a healer's hut.");
 				System.out.println("Healer: " + player.getName() + " you must be careful. I found you near dead.");
 				
 				if (player.equipment.equipmentCheck("Plate Armor"))
@@ -77,8 +57,7 @@ public class Space_Terrain extends Creature implements MapSpaces
 				{
 					System.out.println("I was able to get you here and heal some of your wounds. Next time you may not be so lucky.");
 					player.setHp(8);
-				}
-				
+				}	
 			}
 			else
 			{
@@ -97,7 +76,9 @@ public class Space_Terrain extends Creature implements MapSpaces
 			if (player.equipment.equipmentCheck("Rope"))
 			{
 				System.out.println("You use your rope to help you scale the mountain.");
-
+				
+				
+				//bodhisattva story here
 				System.out.println("What is the answer");
 
 				String question = scan.nextLine();
@@ -131,11 +112,12 @@ public class Space_Terrain extends Creature implements MapSpaces
 						+ "you think to yourself that there must be a\nbetter way to approach this situation.");
 				System.out.println("YOU FALL IN THE RIVER");
 				movement.setRow(6, true);
-				movement.setColumn(5, true);
+				movement.setColumn(3, true);
 
 			}
 		}
 		
+		//Entrance to final area here
 		if (row == 5 && column == 4)
 		{
 			System.out.println("A mighty door stands here");
@@ -151,6 +133,7 @@ public class Space_Terrain extends Creature implements MapSpaces
 			}
 		}
 		
+		//Final encounter story here
 		if (row == 5 && column == 5)
 		{
 			if (player.equipment.equipmentCheck("Time Key"))
@@ -168,8 +151,6 @@ public class Space_Terrain extends Creature implements MapSpaces
 			}
 			
 		}
-
-		
 		return terrain;
 	}
 }

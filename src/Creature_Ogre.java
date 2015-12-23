@@ -22,6 +22,10 @@ public class Creature_Ogre extends Creature implements MapSpaces
 
 		int creatureDamage = (getDamage() / block);
 		int totalDamage = creatureDamage - armor;
+		if (armor > totalDamage)
+		{
+			totalDamage = 0;
+		}
 		turn ++;
 
 		if (turn == 1 || turn == 2)

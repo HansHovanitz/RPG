@@ -28,12 +28,12 @@ public class Play
 
 		do
 		{	
-			
 			if (options && menu <= 4)
 			{
 				map.displayMap(movement.getRow(), movement.getColumn());
 				System.out.println();
 			}
+			
 			description.menu();
 			
 			do
@@ -44,13 +44,7 @@ public class Play
 			}
 			while (menu == 0 || menuInput == null);
 			
-			
-			
-			
 			//menu = scan.nextInt();
-			
-			
-			
 			
 			System.out.println();
 			map.updateMap(movement.getRow(), movement.getColumn());
@@ -78,22 +72,23 @@ public class Play
 				//Put a check here to make sure, then exit the program. 
 				default:  break;
 			}
-			if (menu > 7 && menu != 10)
+			
+			//Debug
+			//System.out.println(menu);
+			
+			if (menu < 7 && menu != 10)
 			{
 				map.updateMap(movement.getRow(), movement.getColumn());
-	
 				if (movement.getWallCheck() == false && menu < 5)
 				{
 					encounter.room(movement.getRow(), movement.getColumn(), movement, scan);
 				}
 				System.out.println();
 			}
-			
 		}
 		//Implement quit later.
 		while (menu != 10);
 		scan.close();
-		
 	}
 	
 	public static int setInput(String input, Description description)
@@ -124,10 +119,7 @@ public class Play
 			{
 				System.out.println("\n***Invalid Input. Please select another option.");
 			}	
-		}
-		
-	
-		
+		}	
 		return menu;
 	}
 }

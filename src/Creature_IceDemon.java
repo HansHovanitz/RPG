@@ -14,16 +14,16 @@ public class Creature_IceDemon extends Creature implements MapSpaces
 	{
 		if (player.equipment.equipmentCheck("Plate Armor"))
 		{
-			System.out.println("An eerie stillness permeates your senses. However, the alter is still destroyed and "
-					+ " you know that the deamon is dead. There is nothing to fear here. You must continue onward with your quest.");
+			System.out.println("An eerie stillness permeates your senses. However, the altar is still destroyed and "
+					+ "you know \nthat the deamon is dead. There is nothing to fear here. You must continue onward with your quest.");
 			Space_Other other = new Space_Other();
 			return other;
 		}
 		else
 		{
-			System.out.println("The swirling snow and strong winds continue to increase. Before you a great alter is visible.\n"
-					+ " As you cautiosuly approach the runic symbols on the alter begin to glow and the shadowy form of an ancient\n"
-					+ " demon materializes.");
+			System.out.println("The swirling snow and strong winds continue to increase. Before you a great altar is visible.\n"
+					+ "As you cautiosuly approach the runic symbols on the alter begin to glow and the shadowy form of an ancient\n"
+					+ "demon materializes.");
 			Creature_IceDemon demon = new Creature_IceDemon();
 			return demon;
 		}
@@ -39,7 +39,7 @@ public class Creature_IceDemon extends Creature implements MapSpaces
 			totalDamage = 0;
 		}
 		
-		System.out.println(getName() + "  " + totalDamage + " (" + creatureDamage + "-" + armor + ") damage!");
+		System.out.println(getName() + " does " + totalDamage + " (" + creatureDamage + "-" + armor + ") damage!");
 
 		if (fire == false)
 		{
@@ -66,7 +66,7 @@ public class Creature_IceDemon extends Creature implements MapSpaces
 	public void getLoot(PlayerCharacter player)
 	{
 		player.equipment.plateArmor("yes");
-		System.out.println("\nWhere the might Demon once stood appears a pack with ordained with what appears to be long-"
+		System.out.println("\nWhere the mighty Demon once stood appears a pack with ordained with what appears to be long-"
 		+ "forgotten runic symbols of some sort. \nAfter cautiously opening the pack you find that a set of old, yet "
 		+ "intact plate armor is within. \nThis certainly looks more sturdy than your current armor.");
 	}

@@ -14,7 +14,7 @@ public class Space_Store extends Creature implements MapSpaces
 		Description description = new Description();
 		//Scanner scan = new Scanner(System.in);
 
-
+		//Starting merchant
 		if (row == 0 && column == 0)
 		{
 			description.room(row, column, 0);
@@ -124,7 +124,7 @@ public class Space_Store extends Creature implements MapSpaces
 				}
 			}
 		}
-		if (row == 2 && column == 3)
+		if (row == 3 && column == 2)
 
 		{
 			System.out.println("City");

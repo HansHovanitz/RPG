@@ -97,7 +97,7 @@ public class Description
 
 
 
-
+//LOOKS LIKE THIS IS MOSTLY DONE IN MONSTER CLASSES. 
 	//Room descriptions
 	public void room(int row, int column, int roomEncounter)
 	{
@@ -131,11 +131,11 @@ public class Description
 		{
 			if (roomEncounter == 0 || roomEncounter == 1)
 			{
-				System.out.println("A orc attacks!");
+				System.out.println(" TESTORC A orc attacks!");
 			}
 			else
 			{
-				System.out.println("You notice some bones strewn about the area, but there is no sign of any immediate danger.");
+				System.out.println("TEST ORC You notice some bones strewn about the area, but there is no sign of any immediate danger.");
 			}
 		}
 		//etc.

@@ -3,23 +3,17 @@ import java.util.Random;
 
 public class PlayerCharacter
 {
-	
 	protected PlayerCharacter player;
 	protected ItemsConsumable items; 
 	protected ItemsEquipment equipment;
-
 	private String name;
 	private int hp;
 	private int maxHp;
 	private int damage;
 	private int armor;
 	private int coins;
-
 	private boolean resist;
-
-
 	Description description = new Description();
-	//Scanner scan = new Scanner(System.in);
 
 	public PlayerCharacter(String name, int hp, int maxHp, int damage, int armor, int coins)
 	{
@@ -124,24 +118,12 @@ public class PlayerCharacter
 			System.out.println("\nYou hit the " + creature + " for " + basicScrollDamage + " damage!");
 			return basicScrollDamage;
 		}
-
-
 	}
-
-
-
-
-
-
 
 	public void statusScreen(Scanner scan)
 	{
-
 		description.statusMenu();
-
-
 		int statusSelection = scan.nextInt();
-
 		System.out.println();
 
 		if (statusSelection == 1)
@@ -162,7 +144,7 @@ public class PlayerCharacter
 		}
 	}
 
-	
+	//Toggle for always on map/HP
 	public boolean option(Scanner scan)
 	{
 		//Scanner scan = new Scanner(System.in);
@@ -171,6 +153,7 @@ public class PlayerCharacter
 		System.out.println("2. Off");
 		System.out.print("___");
 		int options = scan.nextInt();
+		System.out.println("");
 
 		if (options == 1)
 		{
@@ -186,19 +169,6 @@ public class PlayerCharacter
 			return false;
 		}
 	}
-
-
-
-
-	//Make boolean based method that checks for the players items..for example if I buy a sword or find an axe set boolean to true. If that boolean is true then +1 to player damage (or whatever)
-	//Have an array for items that checks boolean status of each item. If boolean = true print out that item. Use a loop for go thru em.
-
-
-
-
-
-
-
 
 	public boolean resistCheck()
 	{
@@ -217,18 +187,13 @@ public class PlayerCharacter
 		}
 	}
 
-
-
-
+	//Access player equipment and consumables
 	public void passPlayer(PlayerCharacter player)
 	{
 		this.player = player;
 		items = new ItemsConsumable(player);
 		equipment = new ItemsEquipment(player);
 	}
-
-
-
 }
 
 

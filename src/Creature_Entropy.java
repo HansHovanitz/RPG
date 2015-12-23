@@ -11,6 +11,8 @@ public class Creature_Entropy extends Creature implements MapSpaces
 	public Creature doAction(int row, int column, PlayerCharacter player, PlayerMovement movement, Scanner scan)
 	{
 		Creature_Entropy entropy = new Creature_Entropy();
+		
+		System.out.println("entropy test");
 		return entropy;
 	}
 
