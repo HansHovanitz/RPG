@@ -47,7 +47,7 @@ public class Creature_FireMage extends Creature implements MapSpaces
 			else
 			{
 				System.out.println("The " + getName() + " hurls a mighty fireball towards you doing 12 (armor ignored) damage!");
-				System.out.println("You need to think of a way to slow the mage down.");
+				System.out.println("You need to think of a way to slow the 'fire' mage down.");
 				totalDamage = 12;
 			}
 			turn = 0;

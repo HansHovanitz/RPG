@@ -107,5 +107,6 @@ public class Creature
 
 	public void getLoot(PlayerCharacter player)
 	{
+		//This is handled in individual creature classes. Default is null. 
 	}
 }

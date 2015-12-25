@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Encounter
 {
 	Scanner scan = new Scanner(System.in);
@@ -125,6 +124,7 @@ public class Encounter
 				&& encounter.getClass() != Space_Store.class 
 				&& encounter.getClass() != Space_Terrain.class) 
 		{
+			
 			boolean victory = combat.battle(player, encounter, displayHp, scan);
 			
 			player.equipment.victoryEquip(victory, row, column);	

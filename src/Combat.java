@@ -2,10 +2,8 @@ import java.util.Scanner;
 
 public class Combat 
 {
-	
 	public boolean battle(PlayerCharacter player, Creature monster, boolean displayHp, Scanner scan)
 	{
-		//Scanner scanner = new Scanner(System.in);
 		Description description = new Description();
 		boolean victory = false;
 		do
@@ -14,23 +12,34 @@ public class Combat
 			String scroll = "";
 			int block = 1;
 			boolean loopAgain = false;
+			boolean hydra = false;
 			
+			//Check special creature cases
+			if (monster.getName().equals("Lava Hydra"))
+			{
+				hydra = true;
+			}
 			
 			int action = scan.nextInt();
 			System.out.println();
 
-
 			switch (action)
 			{
-				case 1: monster.setHp(monster.getHp() - player.playerCombat(monster.getName())); break;
+				case 1: if (hydra)
+						{				
+							((Creature_LavaHydra) monster).battleHydra(player, (Creature_LavaHydra) monster, scan); break;
+						}
+						else 
+						{
+							monster.setHp(monster.getHp() - player.playerCombat(monster.getName())); break;
+						}
 				case 2: if (player.equipment.equipmentCheck("Shield"))
 						{
 							block = 2;
 						}
 						else
 						{
-							System.out.println("You have no shield to block with!");
-							
+							System.out.println("You have no shield to block with!");	
 						}
 						break;
 				case 3: scroll = player.items.useConsumableItem("inCombat", scan);
@@ -41,12 +50,8 @@ public class Combat
 						break;
 				case 4: System.out.println("Health Points: " + player.getHp() + "/" + player.getMaxHp());
 						loopAgain = true;
-				default: break;
-
-				//case 1: monster.setHp(monster.getHp() - (player.getDamage() + 12  --player.specialItemCheck...if true return 2 or 3 or whatever--   ));  The +12 can be a monster weakness method of a specific monster.
+				default: System.out.println("You do nothing");break;
 			}
-
-
 
 			if (monster.getHp() > 0 && loopAgain == false)
 			{
@@ -59,15 +64,8 @@ public class Combat
 			{
 				System.out.println("\nYour Health Points: " + player.getHp() + "/" + player.getMaxHp());
 			}
-
-
-
 		}
 		while (player.getHp() > 0 && monster.getHp() > 0);
-
-
-
-		//monster.test(); --Why Doesn't this work? -- will work in method with actual goblin in it..not the generic monster. Pass 'weakness' or whatever into combat maybe and then apply it to damage here).
 
 
 		if (player.getHp() > 0)
@@ -77,7 +75,6 @@ public class Combat
 			player.setCoins(player.getCoins() + monster.getCoins());
 			monster.getLoot(player);
 			victory = true;
-
 		}
 		else
 		{
@@ -90,6 +87,4 @@ public class Combat
 		//scanner.close();
 		return victory;
 	}
-	
-
 }

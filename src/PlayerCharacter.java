@@ -6,6 +6,7 @@ public class PlayerCharacter
 	protected PlayerCharacter player;
 	protected ItemsConsumable items; 
 	protected ItemsEquipment equipment;
+	protected Description description = new Description();
 	private String name;
 	private int hp;
 	private int maxHp;
@@ -13,7 +14,6 @@ public class PlayerCharacter
 	private int armor;
 	private int coins;
 	private boolean resist;
-	Description description = new Description();
 
 	public PlayerCharacter(String name, int hp, int maxHp, int damage, int armor, int coins)
 	{
@@ -144,10 +144,8 @@ public class PlayerCharacter
 		}
 	}
 
-	//Toggle for always on map/HP
 	public boolean option(Scanner scan)
 	{
-		//Scanner scan = new Scanner(System.in);
 		System.out.println("Toggle this option to always display Map and Health Points.");
 		System.out.println("1. On");
 		System.out.println("2. Off");

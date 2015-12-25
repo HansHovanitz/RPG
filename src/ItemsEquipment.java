@@ -4,16 +4,16 @@ import java.util.ArrayList;
 public class ItemsEquipment 
 {
 	protected PlayerCharacter player;
-	private boolean[] healthLockets = new boolean[3];
+	protected ArrayList<String> equipmentList;
+	private boolean[] healthLockets;
 	
-	ItemsEquipment(PlayerCharacter player)
+	public ItemsEquipment(PlayerCharacter player)
 	{
 		this.player = player;
+		equipmentList = new ArrayList<String>();
+		healthLockets = new boolean[3];
 	}
 	
-	//EQUIPMENT ITEMS
-
-		ArrayList<String> equipmentList = new ArrayList<String>();
 		public void equipmentList(String item, String addOrRemove)
 		{
 			if (addOrRemove.equals("add"))
@@ -24,9 +24,6 @@ public class ItemsEquipment
 			{
 				equipmentListRemovalHelper(item);
 			}
-
-			//add/remove eq here.   Have another method that goes thru list and prints it and another than goes thru and finds something.  If have already, then no allow to be added again (bought)
-			//also need to remove it.  Write these out i think haha.
 		}
 
 		public void equipmentListRemovalHelper(String item)
@@ -39,13 +36,6 @@ public class ItemsEquipment
 				}
 			}
 		}
-
-
-
-
-
-
-
 
 	//method simply to print out equipmentList array.
 		public void viewEquipmentList()
@@ -60,7 +50,7 @@ public class ItemsEquipment
 			}
 		}
 
-	//to make sure another item is not sold or aquired.
+	//to make sure another item is not sold or acquired.
 		public boolean equipmentCheck(String check)
 		{
 			boolean equipmentCheck = false;
@@ -75,20 +65,6 @@ public class ItemsEquipment
 			}
 			return equipmentCheck;
 		}
-
-				//else return false      if returns false then let player buy it or receive it.
-					//stuff      go thru the array and check to see if its there already.
-					//for (String s : arrayList)
-					  //  if (s.equals(value))
-					    //(equipmentList[i] == check)
-	        // ...
-
-
-
-
-
-	//need equipmentRemoval..same method as equipment check only removes item if found from arrayList.
-
 
 		public void healthLocket(String item, int row, int column)
 		{
@@ -130,6 +106,7 @@ public class ItemsEquipment
 
 		}
 		
+		//Don't need. Add items via creature classes. 
 		public void victoryEquip(boolean victory, int row, int column)
 		{
 			if (victory)
