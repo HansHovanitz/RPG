@@ -12,9 +12,9 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 	public Creature_LavaHydra()
 	{
 		super("Lava Hydra", 100, 5, 9);
-		heads[0] = 30;
-		heads[1] = 30;
-		heads[2] = 30;
+		heads[0] = 25;
+		heads[1] = 25;
+		heads[2] = 25;
 	}
 	
 	public Creature doAction(int row, int column, PlayerCharacter player, PlayerMovement movement, Scanner scan)
@@ -32,10 +32,8 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 		int creatureDamage = (getDamage() / block);
 		int totalDamage = creatureDamage - armor;
 		
-		System.out.println("");
-		
-		
-		
+		System.out.println(getName() + " does " + totalDamage + " (" + creatureDamage + "-" + armor + ") damage!");
+	
 		return totalDamage;
 	}
 	
@@ -60,7 +58,6 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 		
 		if (resist)
 		{
-			extraDamage = 0;
 			System.out.println("Your armor helps reflect the extra heat damage");
 		}
 		else
@@ -93,9 +90,11 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 			miss = true;
 		}
 		
+		System.out.println("");
+		
 		if (miss == true)
 		{
-			System.out.println("You swing at the air and, not to your surprise, don't hit anything");
+			System.out.println("You swing at the air and, not to your surprise, don't hit anything.");
 		}
 		else
 		{
@@ -103,11 +102,85 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 			
 			if (head == 1)
 			{
-				heads[0] -= playerDamage;
-				System.out.println("You strike the Hydra's left head for " + playerDamage + "damage!");
+				heads[0] -= playerDamage; 
+				System.out.println("You strike the Hydra's left head for " + playerDamage + " damage!");
+				headHelper(heads[0]);
 			}
+			if (head == 2)
+			{
+				heads[1] -= playerDamage;
+				System.out.println("You strike the Hydra's middle head for " + playerDamage + " damage!");
+				headHelper(heads[1]);
+			}
+			if (head == 3)
+			{
+				heads[2] -= playerDamage;
+				System.out.println("You strike the Hydra's right head for " + playerDamage + " damage!");
+				headHelper(heads[2]);
+			}
+			
+			//Debug
+			//System.out.println(heads[0]);
+			//System.out.println(heads[1]);
+			//System.out.println(heads[2]);
+			
+			
+			//Regenerate hydra heads
+			int headCheck = 0;
+			for (int i = 0; i < heads.length; i++)
+			{
+				if (heads[i] < 0)
+				{
+					headCheck++;
+					for (int j = 0; j < heads.length; j++)
+					{
+						if (heads[j] > 15 && ice != true)
+						{
+							heads[i] = 20;
+							headCheck--;
+							if (i == 0)
+							{
+								System.out.println("The hydra's left head regrows!");
+								break;	
+							}
+							else if (i == 1)
+							{
+								System.out.println("The hydra's middle head regrows!");
+								break;
+							}			
+							else
+							{
+								System.out.println("The hydra's right head regrows!");
+								break;
+							}		
+						}
+					}
+				}
+			}	
+			if (headCheck == 3)
+			{
+				monster.setHp(0);
+				System.out.println("Dead");
+			}
+			
+			headCheck = 0;
 		}
+	}
 	
+	public void headHelper(int damageDone)
+	{
+		if (damageDone > 15)
+		{
+			System.out.println("The head still looks close to full health.");
+		}
+		else if (damageDone > 0)
+		{
+			System.out.println("The head is visibly damaged.");
+		}
+		else
+		{
+			System.out.println("You cut off the hydra's head!");
+		}
 	}
 	
 	public void getLoot(PlayerCharacter player)

@@ -50,6 +50,7 @@ public class Combat
 						break;
 				case 4: System.out.println("Health Points: " + player.getHp() + "/" + player.getMaxHp());
 						loopAgain = true;
+						break;
 				default: System.out.println("You do nothing");break;
 			}
 

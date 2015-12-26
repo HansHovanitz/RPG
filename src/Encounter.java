@@ -12,7 +12,7 @@ public class Encounter
 	
 	public Encounter()
 	{
-		player = new PlayerCharacter("", 100, 100, 20, 1, 50);
+		player = new PlayerCharacter("", 100, 100, 5, 1, 50);
 		spaces = new MapSpaces[6][6];
 		displayHp = false;
 		description = new Description();
@@ -23,6 +23,8 @@ public class Encounter
 		
 		System.out.println("ice scroll added");
 		player.items.scrolls("addIce");
+		System.out.println("time sword added");
+		player.equipment.timeSword("yes");
 		//player.equipment.plateArmor("yes");
 		
 		//-------------------------------------------	
