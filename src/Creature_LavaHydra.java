@@ -32,6 +32,15 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 		int creatureDamage = (getDamage() / block);
 		int totalDamage = creatureDamage - armor;
 		
+		for (int i = 0; i < heads.length; i++)
+		{
+			if (heads[i] > 0)
+			{
+				System.out.println("You are hit by one of the hydra's heads.");
+				totalDamage += creatureDamage - armor;
+			}
+		}
+		System.out.println("");
 		System.out.println(getName() + " does " + totalDamage + " (" + creatureDamage + "-" + armor + ") damage!");
 	
 		return totalDamage;
@@ -156,13 +165,27 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 						}
 					}
 				}
-			}	
+				if (heads[i] > 15)
+				{
+					System.out.print("O");
+				}
+				else if (heads[i] > 0 && heads[i] < 15)
+				{
+					System.out.print("o");
+				}
+				else
+				{
+					System.out.print("x");
+				}
+				System.out.print("  ");
+			}
+			System.out.println("");
+			
 			if (headCheck == 3)
 			{
 				monster.setHp(0);
 				System.out.println("Dead");
 			}
-			
 			headCheck = 0;
 		}
 	}
@@ -181,6 +204,7 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 		{
 			System.out.println("You cut off the hydra's head!");
 		}
+		System.out.println("");
 	}
 	
 	public void getLoot(PlayerCharacter player)

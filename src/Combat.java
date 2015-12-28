@@ -47,6 +47,10 @@ public class Combat
 						{
 							monster.setHp(monster.getHp() - player.scrollCombat(monster.getName(), monster.weakness(scroll)));
 						}
+						if (scroll.equals("return"))
+						{
+							loopAgain = true;
+						}
 						break;
 				case 4: System.out.println("Health Points: " + player.getHp() + "/" + player.getMaxHp());
 						loopAgain = true;

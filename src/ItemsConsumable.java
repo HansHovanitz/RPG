@@ -11,7 +11,7 @@ public class ItemsConsumable
 		this.player = player;
 	}
 	//CONSUMABLE ITEMS
-	//combine thus and helper (below) method.
+	//combine this and helper (below) method.
 		public String useConsumableItem(String combat, Scanner scan)
 		{
 			//Scanner scan = new Scanner(System.in);
@@ -62,6 +62,7 @@ public class ItemsConsumable
 			}
 			else if (itemToUse == 0)
 			{
+				scroll = "return";
 			}
 			else
 			{
