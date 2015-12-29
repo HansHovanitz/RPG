@@ -77,6 +77,22 @@ public class Description
 		System.out.println("0. Exit Shop");
 	}
 	
+	public void merchantTwoMenu()
+	{
+		System.out.println("1. Minor Health Potion\t  |\t 5 coins");
+		System.out.println("2. Health Potion\t  |\t 15 coins");
+		System.out.println("3. Expertly Crafted Sword |\t 50 coins");
+		System.out.println("4. Shield\t\t  |\t 10 coins");
+		System.out.println("5. Chainmail Armor\t  |\t 50 coins");
+		System.out.println("6. Hammer\t\t  |\t 20 coins");
+		System.out.println("7. Rope\t\t\t  |\t 10 coins");
+		System.out.println("8. Ice Scroll\t\t  |\t 25 coints");
+		System.out.println("9. Fire Scoll\t\t  |\t 25 coins");
+		System.out.println("10. Talk to the Merchant  |\t Free");  //He'll give random hints..like trolls being weak to fire etc.
+		System.out.println();
+		System.out.println("0. Exit Shop");
+	}
+	
 	public void healerMenu()
 	{
 		System.out.println("\n1. Heal 10 points of health\t\t 5 coins");
@@ -88,16 +104,7 @@ public class Description
 	{
 
 	}
-
-
-
-
-
-
-
-
-
-//LOOKS LIKE THIS IS MOSTLY DONE IN MONSTER CLASSES. 
+	
 	//Room descriptions
 	public void room(int row, int column, int roomEncounter)
 	{
@@ -105,94 +112,6 @@ public class Description
 		{
 			System.out.println("You enter the room...");
 			System.out.println("A merchant greets you.");
-		}
-		else if (row == 1 && column == 0)
-		{
-
-			if (roomEncounter == 0)
-			{
-				System.out.println("You find nothing here...");
-			}
-			else
-			{
-				System.out.println("A Goblin awaits you!");
-			}
-		}
-		else if (row == 2 && column == 0)
-		{
-			//System.out.println("You enter the room...");
-			//System.out.println("There is nothing there");
-		}
-
-
-
-
-		else if (row == 2 && column == 0)
-		{
-			if (roomEncounter == 0 || roomEncounter == 1)
-			{
-				System.out.println(" TESTORC A orc attacks!");
-			}
-			else
-			{
-				System.out.println("TEST ORC You notice some bones strewn about the area, but there is no sign of any immediate danger.");
-			}
-		}
-		//etc.
-
-		else if (row == 3 && column == 0)
-		{
-		}
-
-		else if (row == 4 && column == 0)
-		{
-		}
-
-		else if (row == 5 && column == 0)
-		{
-		}
-
-
-
-
-
-		else if (row == 0 && column == 1)
-		{
-		}
-
-		else if (row == 1 && column == 1)
-		{
-		}
-
-		else if (row == 2 && column == 1)
-		{
-		}
-		else if (row == 3 && column == 1)
-		{
-		}
-
-		else if (row == 4 && column == 1)
-		{
-		}
-
-		else if (row == 5 && column == 1)
-		{
-		}
-
-
-
-
-
-
-
-
-
-
-
-
-		else if (row == 2 && column == 2)
-		{
-			System.out.println("A fat ogre awakes!");
 		}
 	}
 }

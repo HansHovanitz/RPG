@@ -70,24 +70,8 @@ public class ItemsConsumable
 			}
 
 			return scroll;
-
-
 			//if itemToUse == 10) I don't want to use any items.
 		}
-
-		//public boolean useConsumableItemHelper(int item)
-		//{
-
-			//if (minorHealthPotions.size() > 0 && item == 1)
-			//{
-			//	return true;
-			//}
-			//else
-			//{
-			//	return false;
-			//}
-		//}
-
 
 		public void consumableItemsList()
 		{

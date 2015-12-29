@@ -1,17 +1,15 @@
-//import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Creature_LavaHydra extends Creature implements MapSpaces
 {
 	private boolean ice = false;
-	private int turn;
 	private int []heads = new int[3];
 	
 	
 	public Creature_LavaHydra()
 	{
-		super("Lava Hydra", 100, 5, 9);
+		super("Lava Hydra", 100, 3, 9);
 		heads[0] = 25;
 		heads[1] = 25;
 		heads[2] = 25;
@@ -19,29 +17,40 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 	
 	public Creature doAction(int row, int column, PlayerCharacter player, PlayerMovement movement, Scanner scan)
 	{
-		Creature_LavaHydra hydra = new Creature_LavaHydra();
-		System.out.println("Before you a enormous Hydra slithers out of the molten river.\n"
-				+ "The creature has three equally terrifying heads.");
-		return hydra;
+		if (player.equipment.equipmentCheck("Plate Armor"))
+		{
+			Space_Other other = new Space_Other();
+			System.out.println("The Lava Hydra's hulking corpse still lays here. \n"
+					+ "You must continue on with your quest.");
+			return other;
+		}
+		else
+		{
+			Creature_LavaHydra hydra = new Creature_LavaHydra();
+			System.out.println("Before you a enormous Hydra slithers out of the molten river.\n"
+					+ "The creature has three equally terrifying heads.");
+			return hydra;
+		}
 	}
-	
-	
-	//Hydra's attack. Need to implement. 
+	 
 	public int creatureCombat(int armor, int block)
 	{
 		int creatureDamage = (getDamage() / block);
-		int totalDamage = creatureDamage - armor;
+		int totalDamage = 0;
+		int headCount = 0;
 		
 		for (int i = 0; i < heads.length; i++)
 		{
 			if (heads[i] > 0)
 			{
 				System.out.println("You are hit by one of the hydra's heads.");
-				totalDamage += creatureDamage - armor;
+				totalDamage += (creatureDamage - armor);
+				headCount++;
 			}
 		}
 		System.out.println("");
-		System.out.println(getName() + " does " + totalDamage + " (" + creatureDamage + "-" + armor + ") damage!");
+		System.out.println("The " + getName() + "'s head(s) does " + totalDamage + " "
+				+ "(" + (creatureDamage * headCount) + "-" + (armor * headCount) + ") damage!");
 	
 		return totalDamage;
 	}
@@ -184,7 +193,7 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 			if (headCheck == 3)
 			{
 				monster.setHp(0);
-				System.out.println("Dead");
+				//System.out.println("Dead");
 			}
 			headCheck = 0;
 		}
@@ -209,8 +218,20 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 	
 	public void getLoot(PlayerCharacter player)
 	{
-		player.equipment.timeSword("yes");
-		System.out.println("\nDead Hydra.");
+		if (player.equipment.equipmentCheck("Time Sword"))
+		{
+			//Already have time sword
+		}
+		else
+		{
+			player.equipment.timeSword("yes");
+			System.out.println("After the hydra has collapsed and you are sure there is no more immediate danger, +"
+					+ "you notice an ornate chest. Perhaps the hydra has been guarding the treasure. \n"
+					+ "Inside the chest you find silver sword that looks ordinary at first. However, upon closer \n"
+					+ "inspection, you realize that this must be the fabled 'Time Sword'. Temporal whisps dance \n"
+					+ "around the sword's blade, appearing to fade in and out of existence. \n"
+					+ "This should certainly help you in your adventure.");
+		}
 	}
 
 }

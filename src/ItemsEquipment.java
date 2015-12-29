@@ -124,19 +124,15 @@ public class ItemsEquipment
 
 		public void sword(String item)
 		{
-			//boolean sword = false;
-
 			if (item.equals("yes"))
 			{
-				//sword = true;
 				player.setDamage(player.getDamage() + 2);
 				equipmentList("Sword", "add");
 				player.setCoins(player.getCoins() - 20);
 			}
 			if (item.equals("no"))
 			{
-				//sword = false;
-				player.setDamage(player.getDamage() + 2);
+				player.setDamage(player.getDamage() - 2);
 				equipmentList("Sword", "remove");
 			}
 		}
@@ -190,6 +186,7 @@ public class ItemsEquipment
 			{
 				player.setArmor(player.getArmor() + 2);
 				equipmentList("Leather Armor", "add");
+				player.setCoins(player.getCoins() - 20);
 				
 			}
 			if (item.equals("no"))

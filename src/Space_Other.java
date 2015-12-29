@@ -73,7 +73,7 @@ public class Space_Other extends Creature implements MapSpaces
 			if (visionSwitch == false)
 			{
 				System.out.println("Thin whips of fog dance eerily on the moist ground as you come into a clearing.\n"
-						+ "This must be the place.");
+						+ "This must be the place that you saw in your vision.");
 				//Story for vision quest here.
 				
 				visionSwitch = true;
@@ -88,7 +88,7 @@ public class Space_Other extends Creature implements MapSpaces
 			{
 				System.out.println("As you approach a ramshackle hut nestled between a collection of oddly vibrant trees an elderly"
 					+ " man sitting \nin front of the hut seems to take notice of you and slowly rises to his feet. \nHealer: Hello my friend,"
-					+ "stay awhile and listen. I can aid in the healing of your wounds provided you pay me a sum that that I may later"
+					+ "stay awhile and listen. I can aid in the healing of your wounds provided you pay me a sum so that I may later"
 					+ "replenish my supplies.");
 				
 				healerSwitch = true;
