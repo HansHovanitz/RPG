@@ -18,6 +18,7 @@ public class Play
 		encounter.buildMapSpaces();
 		Scanner scan = new Scanner(System.in);
 		
+		//Enable this when done. 
 		//description.intro();
 
 		encounter.start();
