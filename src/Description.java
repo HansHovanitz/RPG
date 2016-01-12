@@ -1,6 +1,7 @@
+import java.io.Serializable;
 
-
-public class Description
+@SuppressWarnings("serial")
+public class Description implements Serializable
 {
 	public Description ()
 	{
@@ -42,6 +43,7 @@ public class Description
 		System.out.println("5. View Map");
 		System.out.println("6. See My Status");
 		System.out.println("7. Options");
+		System.out.println("8. Save or Load Game");
 		System.out.print("___");
 	}
 

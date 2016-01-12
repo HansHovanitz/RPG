@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.*;
 
 public class Encounter
 {
@@ -12,7 +13,7 @@ public class Encounter
 	
 	public Encounter()
 	{
-		player = new PlayerCharacter("", 100, 100, 5, 1, 500);
+		player = new PlayerCharacter("", 100, 100, 5, 1, 300);
 		spaces = new MapSpaces[6][6];
 		displayHp = false;
 		description = new Description();
@@ -131,6 +132,18 @@ public class Encounter
 			
 			player.equipment.victoryEquip(victory, row, column);	
 		}
+	}
+	
+	public void load() throws IOException
+	{
+		Load load = new Load(scan);
+		player = load.loadCharacter(player);
+	}
+	
+	public void save() throws IOException
+	{
+		Save save = new Save(scan);
+		save.saveCharacter(player);
 	}
 }
 

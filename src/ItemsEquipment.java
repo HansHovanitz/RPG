@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 
 
-public class ItemsEquipment 
+public class ItemsEquipment implements java.io.Serializable
 {
+	private static final long serialVersionUID = 999;
 	protected PlayerCharacter player;
 	protected ArrayList<String> equipmentList;
 	private boolean[] healthLockets;

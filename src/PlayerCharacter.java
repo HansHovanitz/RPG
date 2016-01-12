@@ -1,8 +1,9 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class PlayerCharacter
+public class PlayerCharacter implements java.io.Serializable
 {
+	private static final long serialVersionUID = 999;
 	protected PlayerCharacter player;
 	protected ItemsConsumable items; 
 	protected ItemsEquipment equipment;

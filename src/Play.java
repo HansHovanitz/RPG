@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Play
@@ -69,7 +70,23 @@ public class Play
 							 options = false;
 						 }
 						 break;
-				case 10:  System.out.println("Thanks for playing."); break;
+				case 8:  try
+						 {		
+							encounter.save();
+						 }
+						 catch (IOException ex)
+						 {
+							 System.out.println(ex);
+						 }
+						 break;
+				case 9:  
+				try {
+					encounter.load();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				case 10: System.out.println("Thanks for playing."); break;
 				//Put a check here to make sure, then exit the program. 
 				default:  break;
 			}
@@ -77,7 +94,7 @@ public class Play
 			//Debug
 			//System.out.println(menu);
 			
-			if (menu < 7 && menu != 10)
+			if (menu < 8 && menu != 10)
 			{
 				map.updateMap(movement.getRow(), movement.getColumn());
 				if (movement.getWallCheck() == false && menu < 5)
@@ -116,7 +133,7 @@ public class Play
 		}
 		finally
 		{
-			if (menu > 7 && menu != 10)
+			if (menu > 8 && menu != 10)
 			{
 				System.out.println("\n***Invalid Input. Please select another option.");
 			}	

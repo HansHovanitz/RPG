@@ -2,8 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class ItemsConsumable 
+public class ItemsConsumable implements java.io.Serializable
 {
+	private static final long serialVersionUID = 999;
 	protected PlayerCharacter player;
 	
 	ItemsConsumable(PlayerCharacter player)
