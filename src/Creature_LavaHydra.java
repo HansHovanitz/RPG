@@ -17,7 +17,7 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 	
 	public Creature doAction(int row, int column, PlayerCharacter player, PlayerMovement movement, Scanner scan)
 	{
-		if (player.equipment.equipmentCheck("Plate Armor"))
+		if (player.equipment.equipmentCheck("Time Sword"))
 		{
 			Space_Other other = new Space_Other();
 			System.out.println("The Lava Hydra's hulking corpse still lays here. \n"

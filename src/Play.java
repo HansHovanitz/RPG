@@ -6,13 +6,21 @@ public class Play
 {
 	public static void main (String [] args) throws IOException 
 	{
-		System.out.println("1.New Game \n2.Load Character");
-		Scanner scan = new Scanner(System.in);
-		int choice = scan.nextInt();
-
-
-		play(choice, scan);
-
+		int choice;
+		Scanner scan;
+		do
+		{
+			System.out.println("1.New Game \n2.Load Character \n3.Quit");
+			scan = new Scanner(System.in);
+			choice = scan.nextInt();
+			if (choice != 3)
+			{
+				play(choice, scan);
+			}
+		} while (choice != 3);
+		System.out.println("Thanks for playing.");
+		scan.close();
+		//Program ends. 
 	}
 
 	public static void play(int choice, Scanner scan) throws IOException
@@ -20,8 +28,13 @@ public class Play
 		PlayerMovement movement = new PlayerMovement(0, 0);
 		Description description = new Description();
 		Map map = new Map();
-		map.setMap('*');
+		
+		//Player's character is created here.
+		//Character is either created or loaded depending 
+		//on the choice made from starting menu (main()).
 		Encounter encounter = new Encounter(choice);
+		
+		map.setMap('*');
 		encounter.buildMapSpaces();
 		
 		if (choice == 1)
@@ -32,9 +45,6 @@ public class Play
 			encounter.start();
 		}
 		
-
-		
-
 		boolean options = false;
 		int menu = 0;
 		String menuInput;
@@ -55,8 +65,6 @@ public class Play
 				menu = setInput(menuInput, description);	
 			}
 			while (menu == 0 || menuInput == null);
-			
-			//menu = scan.nextInt();
 			
 			System.out.println();
 			map.updateMap(movement.getRow(), movement.getColumn());
@@ -79,12 +87,12 @@ public class Play
 							 options = false;
 						 } break;	 
 				case 8:  try {
-							 encounter.loadAndSave();
+							 encounter.save();
 						 }
 						 catch (IOException e) {
 							 System.out.println(e);
 						 } break;
-				case 10: System.out.println("Thanks for playing."); break;
+				case 10: //System.out.println("Thanks for playing."); break;
 				//Put a check here to make sure, then exit the program. 
 				default:  break;
 			}
@@ -104,7 +112,7 @@ public class Play
 		}
 		//Implement quit later.
 		while (menu != 10);
-		scan.close();
+		//scan.close();
 	}
 	
 	public static int setInput(String input, Description description)

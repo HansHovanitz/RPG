@@ -6,11 +6,16 @@ public class Encounter
 {
 	Scanner scan = new Scanner(System.in);
 	
-	//Setting up the player's character
+	//Setting up the player's character.
 	protected PlayerCharacter player;
 	protected MapSpaces[][]spaces;
 	protected boolean displayHp;
 	protected Description description;
+	
+	public Encounter()
+	{
+		//Default Constructor
+	}
 	
 	public Encounter(int choice) throws IOException
 	{
@@ -40,13 +45,13 @@ public class Encounter
 		//-------------------------------------------	
 	}
 	
-	//Enables player equipment
+	//Enables player equipment.
 	public void passPlayerCharacter()
 	{
 		player.passPlayer(player);
 	}
 
-	//Build Game Map
+	//Build Game Map.
 	public void buildMapSpaces()
 	{
 		spaces[0][0] = new Space_Store();
@@ -118,7 +123,7 @@ public class Encounter
 	{
 
 		Combat combat = new Combat();
-		Creature encounter;
+		Creature theEncounter;
 
 		/*Fruit aFruit = aMethod(); // get a fruit.
 		if (aFruit instanceof Apple) {
@@ -130,14 +135,14 @@ public class Encounter
 		// Banana banana = (Banana) aFruit;
 		// }*/
 
-		encounter = spaces[row][column].doAction(row, column, player, movement, scan);
+		theEncounter = spaces[row][column].doAction(row, column, player, movement, scan);
 
-		if (encounter.getClass() != Space_Other.class 
-				&& encounter.getClass() != Space_Store.class 
-				&& encounter.getClass() != Space_Terrain.class) 
+		if (theEncounter.getClass() != Space_Other.class 
+				&& theEncounter.getClass() != Space_Store.class 
+				&& theEncounter.getClass() != Space_Terrain.class) 
 		{
 			
-			boolean victory = combat.battle(player, encounter, displayHp, scan);
+			boolean victory = combat.battle(player, theEncounter, displayHp, scan);
 			
 			player.equipment.victoryEquip(victory, row, column);	
 		}

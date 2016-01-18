@@ -12,56 +12,73 @@ public class Load {
 		filename = new String();
 	}
 	
-	//Player character as param
 	public PlayerCharacter loadCharacter() throws IOException
 	{
 		InputStreamReader isr = new InputStreamReader (System.in);
 		BufferedReader stdin = new BufferedReader (isr);
 		
-		//filename = scan.nextLine();
-		//
-		PlayerCharacter player = new PlayerCharacter();
-		
-		System.out.println("\nWhat file would you like to load?:");
-		filename = stdin.readLine().trim();
 		FileInputStream file1 = null;
 		ObjectInputStream inStream = null;
 		
-		try
+		//Default player. 
+		PlayerCharacter player = new PlayerCharacter();
+		
+		int attempts = 0;
+		boolean exit = false;
+		
+		while (!exit)
 		{
-			file1 = new FileInputStream(filename);
-			inStream = new ObjectInputStream(file1);
-			
-			Object inputtedObject = inStream.readObject();
-			
-			boolean isSame = inputtedObject.getClass().equals(player.getClass());
-			
-			if (isSame == true)
+			try
 			{
-				player = (PlayerCharacter) inputtedObject;
-				System.out.println("\n\"" + filename + "\""+ " was loaded successfully!\n");
+				System.out.println("\nWhat file would you like to load?:");
+				filename = stdin.readLine().trim();
+				
+				file1 = new FileInputStream(filename);
+				inStream = new ObjectInputStream(file1);
+				
+				Object inputtedObject = inStream.readObject();
+				
+				boolean isSame = inputtedObject.getClass().equals(player.getClass());
+				
+				if (isSame == true)
+				{
+					player = (PlayerCharacter) inputtedObject;
+					System.out.println("\n\"" + filename + "\""+ " was loaded successfully!\n");
+					exit = true;
+				}
 			}
+			catch (NotSerializableException ex)
+	        {
+	            System.out.println(ex);
+	            attempts++;
+	        }
+	        catch (IOException ex)
+	        {
+	        	System.out.println("\nThere is no saved file of that name.");
+	        	attempts++;
+	        }
+			catch (ClassNotFoundException ex)
+			{
+				ex.printStackTrace();
+				attempts++;
+			}
+	        finally
+	        {
+	            if (inStream != null)
+	            {
+	                inStream.close();
+	            }
+	            if (attempts == 2 && exit != true)
+	            {
+	            	System.out.println("\nMake sure your input matches your save file name exactly.");
+	            }
+	            if (attempts == 3)
+	            {
+	            	System.out.println("\nDefault character loaded.\n");
+	            	exit = true;
+	            }
+	        }	
 		}
-		catch (NotSerializableException ex)
-        {
-            System.out.println(ex);
-        }
-        catch (IOException ex)
-        {
-        	System.out.println("\nThere is no saved file of that name.\n");
-        }
-		catch (ClassNotFoundException ex)
-		{
-			ex.printStackTrace();
-		}
-        finally
-        {
-            if (inStream != null)
-            {
-                inStream.close();
-            }
-        }
-
 		return player;
 	}
 }
