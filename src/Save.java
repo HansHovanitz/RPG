@@ -19,7 +19,7 @@ public class Save {
 		
 		//filename = scan.nextLine();
 		
-		System.out.println("What should be the name of your save file?\n");
+		System.out.println("Please name your save file:");
 		filename = stdin.readLine().trim();
 		FileOutputStream file1 = null;
 		ObjectOutputStream outStream = null;
@@ -29,11 +29,9 @@ public class Save {
             file1 = new FileOutputStream(filename);
             outStream = new ObjectOutputStream(file1);
 
-            //Writes the program's Bank System file to a file of
-            //the user's chosen name.
             outStream.writeObject(player);
 
-            System.out.print(filename + " was written\n");
+            System.out.print("\n\"" + filename + "\""+ " was saved successfully!\n\n");
         }
         //Catch possible exceptions.
         catch (NotSerializableException ex)

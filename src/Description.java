@@ -43,7 +43,7 @@ public class Description implements Serializable
 		System.out.println("5. View Map");
 		System.out.println("6. See My Status");
 		System.out.println("7. Options");
-		System.out.println("8. Save or Load Game");
+		System.out.println("8. Save Character");
 		System.out.print("___");
 	}
 
@@ -100,6 +100,14 @@ public class Description implements Serializable
 		System.out.println("\n1. Heal 10 points of health\t\t 5 coins");
 		System.out.println("2. Heal to your full health\t\t 10 coins");
 		System.out.println("3. Leave the area");
+	}
+	
+	public void loadAndSave()
+	{
+		System.out.println("Select what you would like to do:");
+		System.out.println("1. Save");
+		System.out.println("2. Load");
+		System.out.print("___");
 	}
 
 	public void hints()

@@ -4,25 +4,36 @@ import java.util.Scanner;
 
 public class Play
 {
-	public static void main (String [] args)
+	public static void main (String [] args) throws IOException 
 	{
-		play();
+		System.out.println("1.New Game \n2.Load Character");
+		Scanner scan = new Scanner(System.in);
+		int choice = scan.nextInt();
+
+
+		play(choice, scan);
+
 	}
 
-	public static void play()
+	public static void play(int choice, Scanner scan) throws IOException
 	{
 		PlayerMovement movement = new PlayerMovement(0, 0);
 		Description description = new Description();
 		Map map = new Map();
 		map.setMap('*');
-		Encounter encounter = new Encounter();
+		Encounter encounter = new Encounter(choice);
 		encounter.buildMapSpaces();
-		Scanner scan = new Scanner(System.in);
 		
-		//Enable this when done. 
-		//description.intro();
+		if (choice == 1)
+		{
+			//Enable this when done. 
+			//description.intro();
+			
+			encounter.start();
+		}
+		
 
-		encounter.start();
+		
 
 		boolean options = false;
 		int menu = 0;
@@ -41,8 +52,7 @@ public class Play
 			do
 			{
 				menuInput = scan.next().trim();
-				menu = setInput(menuInput, description);
-				
+				menu = setInput(menuInput, description);	
 			}
 			while (menu == 0 || menuInput == null);
 			
@@ -60,32 +70,20 @@ public class Play
 				case 5:  map.displayMap(movement.getRow(), movement.getColumn()); break;
 				case 6:  encounter.player.statusScreen(scan); break;
 				case 7:  boolean check = encounter.player.option(scan);
-						 if (check == true)
-						 {
+						 if (check == true) {
 							 encounter.displayHpCheck(true);
 							 options = true;
 						 }
-						 else
-						 {	 encounter.displayHpCheck(false);
+						 else {	 
+							 encounter.displayHpCheck(false);
 							 options = false;
+						 } break;	 
+				case 8:  try {
+							 encounter.loadAndSave();
 						 }
-						 break;
-				case 8:  try
-						 {		
-							encounter.save();
-						 }
-						 catch (IOException ex)
-						 {
-							 System.out.println(ex);
-						 }
-						 break;
-				case 9:  
-				try {
-					encounter.load();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+						 catch (IOException e) {
+							 System.out.println(e);
+						 } break;
 				case 10: System.out.println("Thanks for playing."); break;
 				//Put a check here to make sure, then exit the program. 
 				default:  break;

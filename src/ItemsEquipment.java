@@ -76,17 +76,19 @@ public class ItemsEquipment implements java.io.Serializable
 					healthLockets[0] = true;
 					healthLocketHelper();
 				}
-
-				if ((row == 2 && column == 5) && healthLockets[1] == false)
+				else if ((row == 2 && column == 5) && healthLockets[1] == false)
 				{
 					healthLockets[1] = true;
 					healthLocketHelper();
 				}
-
-				if ((row == 5 && column == 1) && healthLockets[2] == false)
+				else if ((row == 5 && column == 1) && healthLockets[2] == false)
 				{
 					healthLockets[2] = true;
 					healthLocketHelper();
+				}
+				else
+				{
+					System.out.println("You have already looted the contents of the chest.");
 				}
 			}
 			else
@@ -101,7 +103,7 @@ public class ItemsEquipment implements java.io.Serializable
 			System.out.println("You smash open the chest with your Hammer and find what looks to be an enchanted item. \n+5 maximum HP.");
 			
 			player.setMaxHp(player.getMaxHp() + 5);
-			player.setHp(player.getHp() + 5);
+			//player.setHp(player.getHp() + 5);
 		
 			equipmentList("Health Locket", "add");
 

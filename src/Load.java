@@ -12,14 +12,17 @@ public class Load {
 		filename = new String();
 	}
 	
-	public PlayerCharacter loadCharacter(PlayerCharacter player) throws IOException
+	//Player character as param
+	public PlayerCharacter loadCharacter() throws IOException
 	{
 		InputStreamReader isr = new InputStreamReader (System.in);
 		BufferedReader stdin = new BufferedReader (isr);
 		
 		//filename = scan.nextLine();
+		//
+		PlayerCharacter player = new PlayerCharacter();
 		
-		System.out.println("What file would you like to load?\n");
+		System.out.println("\nWhat file would you like to load?:");
 		filename = stdin.readLine().trim();
 		FileInputStream file1 = null;
 		ObjectInputStream inStream = null;
@@ -36,7 +39,7 @@ public class Load {
 			if (isSame == true)
 			{
 				player = (PlayerCharacter) inputtedObject;
-				System.out.println(filename + " was read\n");
+				System.out.println("\n\"" + filename + "\""+ " was loaded successfully!\n");
 			}
 		}
 		catch (NotSerializableException ex)
@@ -45,7 +48,7 @@ public class Load {
         }
         catch (IOException ex)
         {
-            System.out.println(ex);
+        	System.out.println("\nThere is no saved file of that name.\n");
         }
 		catch (ClassNotFoundException ex)
 		{

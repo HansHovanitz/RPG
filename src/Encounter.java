@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.io.*;
 
@@ -11,13 +12,21 @@ public class Encounter
 	protected boolean displayHp;
 	protected Description description;
 	
-	public Encounter()
+	public Encounter(int choice) throws IOException
 	{
-		player = new PlayerCharacter("", 100, 100, 5, 1, 300);
+		
+		if (choice == 1) {
+			player = new PlayerCharacter("", 100, 100, 5, 1, 300);
+			passPlayerCharacter();
+		}
+		else {
+			//have load() return an int. if int isn't 1 loop and ask for another save file. 
+			load();
+		}
 		spaces = new MapSpaces[6][6];
 		displayHp = false;
 		description = new Description();
-		passPlayerCharacter();
+		
 		
 		//Debugging Area
 		//-------------------------------------------
@@ -134,10 +143,39 @@ public class Encounter
 		}
 	}
 	
+	public void loadAndSave() throws IOException
+	{
+		description.loadAndSave();
+		int selection = 0;
+		try
+		{
+			selection = scan.nextInt();
+			
+		}
+		catch(InputMismatchException e)
+		{
+			System.out.println(e);
+		}
+		
+		if (selection == 1)
+		{
+			save();
+		}
+		else if (selection == 2)
+		{
+			load();
+		}
+		else
+		{
+			System.out.println("\nInvalid Input. Nothing saved or loaded.\n");
+			scan.nextLine();
+		}	
+	}
+	
 	public void load() throws IOException
 	{
 		Load load = new Load(scan);
-		player = load.loadCharacter(player);
+		player = load.loadCharacter();
 	}
 	
 	public void save() throws IOException

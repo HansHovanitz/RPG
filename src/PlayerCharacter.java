@@ -16,6 +16,11 @@ public class PlayerCharacter implements java.io.Serializable
 	private int coins;
 	private boolean resist;
 
+	public PlayerCharacter()
+	{
+		//Default Constructor 
+	}
+	
 	public PlayerCharacter(String name, int hp, int maxHp, int damage, int armor, int coins)
 	{
 		this.name = name;
@@ -152,7 +157,7 @@ public class PlayerCharacter implements java.io.Serializable
 		System.out.println("2. Off");
 		System.out.print("___");
 		int options = scan.nextInt();
-		System.out.println("");
+		//System.out.println("");
 
 		if (options == 1)
 		{

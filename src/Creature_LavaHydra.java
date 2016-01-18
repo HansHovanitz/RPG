@@ -233,5 +233,4 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 					+ "This should certainly help you in your adventure.");
 		}
 	}
-
 }
