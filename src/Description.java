@@ -1,40 +1,39 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.util.Scanner;
 
 @SuppressWarnings("serial")
 public class Description implements Serializable
 {
+	Scanner scan;
+	
 	public Description ()
 	{
 	}
 
-	public void enterRoom()
-	{
+	public void enterRoom(){
 		System.out.println("You enter the room...");
 	}
 
-	public void intro()
-	{
+	public void intro(){
 		System.out.println("Welcome to the adventure!\n");
 
-		for (int i = 0; i < 5; i++)
-		{
+		for (int i = 0; i < 5; i++){
 			System.out.print(".  ");
 
-			try
-			{
+			try{
 				Thread.sleep(1000);
 			}
 
-			catch (InterruptedException e)
-			{
+			catch (InterruptedException e){
 				System.out.println(e.getMessage());
 			}
 		}
 		System.out.println();
 	}
 
-	public void menu()
-	{
+	public void menu(){
 		System.out.println("What would you like to do now?");
 		System.out.println("1. Move 'Up'");
 		System.out.println("2. Move 'Down'");
@@ -42,13 +41,12 @@ public class Description implements Serializable
 		System.out.println("4. Move 'Right'");
 		System.out.println("5. View Map");
 		System.out.println("6. See My Status");
-		System.out.println("7. Options");
-		System.out.println("8. Save Character");
+		System.out.println("7. Save Character");
+		System.out.println("8. Options");
 		System.out.print("___");
 	}
 
-	public void combatMenu()
-	{
+	public void combatMenu(){
 		System.out.println("\nWhat would you like to do now?");
 		System.out.println("1. Attack");
 		System.out.println("2. Block");
@@ -57,8 +55,7 @@ public class Description implements Serializable
 		System.out.print("___");
 	}
 
-	public void statusMenu()
-	{
+	public void statusMenu(){
 		System.out.println("What would you like to view?");
 		System.out.println("1. Character Information");
 		System.out.println("2. Equipment");
@@ -66,8 +63,7 @@ public class Description implements Serializable
 		System.out.print("___");
 	}
 
-	public void merchantOneMenu()
-	{
+	public void merchantOneMenu(){
 		System.out.println("1. Minor Health Potion\t 5 coins");
 		System.out.println("2. Sword\t\t 20 coins");
 		System.out.println("3. Shield\t\t 10 coins");
@@ -79,8 +75,7 @@ public class Description implements Serializable
 		System.out.println("0. Exit Shop");
 	}
 	
-	public void merchantTwoMenu()
-	{
+	public void merchantTwoMenu(){
 		System.out.println("1. Minor Health Potion\t  |\t 5 coins");
 		System.out.println("2. Health Potion\t  |\t 15 coins");
 		System.out.println("3. Expertly Crafted Sword |\t 50 coins");
@@ -95,31 +90,26 @@ public class Description implements Serializable
 		System.out.println("0. Exit Shop");
 	}
 	
-	public void healerMenu()
-	{
+	public void healerMenu(){
 		System.out.println("\n1. Heal 10 points of health\t\t 5 coins");
 		System.out.println("2. Heal to your full health\t\t 10 coins");
 		System.out.println("3. Leave the area");
 	}
 	
-	public void loadAndSave()
-	{
+	public void loadAndSave(){
 		System.out.println("Select what you would like to do:");
 		System.out.println("1. Save");
 		System.out.println("2. Load");
 		System.out.print("___");
 	}
 
-	public void hints()
-	{
+	public void hints(){
 
 	}
 	
 	//Room descriptions
-	public void room(int row, int column, int roomEncounter)
-	{
-		if (row == 0 && column == 0)
-		{
+	public void room(int row, int column, int roomEncounter){
+		if (row == 0 && column == 0){
 			System.out.println("You enter the room...");
 			System.out.println("A merchant greets you.");
 		}

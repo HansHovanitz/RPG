@@ -76,10 +76,12 @@ public class PlayerMovement
 
 	public void setRow(int a, boolean terrain)
 	{
+		row = a;
+		
+		//Legacy Code. 
 		if (a == 6)
 		{
 			this.row = 0;
-			//this.row = row - 0;
 		}
 		if (a == 4)
 		{
@@ -89,8 +91,6 @@ public class PlayerMovement
 		{
 			this.row = 5;
 		}
-		
-
 	}
 
 
@@ -109,7 +109,6 @@ public class PlayerMovement
 				wallCheck = false;
 			}
 		}
-
 		else if (a == 4)
 		{
 			if (column >= 5)
@@ -126,15 +125,13 @@ public class PlayerMovement
 	}
 
 	public void setColumn(int a, boolean terrain)
-	{
-		//I can simplify this to just this.column = a; as long as I match up the arguments. 
+	{ 
+		column = a;
 		
-		
-		//Both same colum, don't need the same line of code twice but keeping it for reference. 
+		//Legacy Code.  
 		if (a == 3)
 		{
 			this.column = 3;
-			//this.column = column - 2;
 		}
 		if (a == 4)
 		{
@@ -144,7 +141,6 @@ public class PlayerMovement
 		{
 			this.column = 5;
 		}
-
 	}
 
 //Or whereever they player needs to be moved to.

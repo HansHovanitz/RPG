@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Combat 
 {
-	public boolean battle(PlayerCharacter player, Creature monster, boolean displayHp, Scanner scan)
+	public boolean battle(PlayerCharacter player, Creature monster, boolean displayHp, Scanner scan, PlayerMovement movement)
 	{
 		Description description = new Description();
 		boolean victory = false;
@@ -14,7 +14,7 @@ public class Combat
 			boolean loopAgain = false;
 			boolean hydra = false;
 			
-			//Check special creature cases
+			//Check special creature cases.
 			if (monster.getName().equals("Lava Hydra"))
 			{
 				hydra = true;
@@ -83,9 +83,11 @@ public class Combat
 		}
 		else
 		{
-			//Implement later.
-			System.out.println("You are dead.");
 			victory = false;
+			player.dead();
+			movement.setRow(0, true);
+			movement.setColumn(0, true);
+
 
 			//call dead method (which play() checks
 		}

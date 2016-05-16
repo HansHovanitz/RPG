@@ -75,9 +75,19 @@ public class Space_Other extends Creature implements MapSpaces
 				System.out.println("Thin whips of fog dance eerily on the moist ground as you come into a clearing.\n"
 						+ "This must be the place that you saw in your vision.");
 				//Story for vision quest here.
-				
+				System.out.println("You here a whipser..." + player.getName() + " you must ascend to find answers for the"
+						+ " 'nothing'ness. Find the Bodhisattva... take the key. Confront entropy.");
 				visionSwitch = true;
 			}	
+			else if (!player.equipment.equipmentCheck("Time Key"))
+			{
+				System.out.println("The clearing is clear and still. /nYou must ascent the mountain to find the Bodhisattva.");
+			}
+			else 
+			{
+				System.out.println("At first glance the clearing seems to be as serene as ever. However, you quickly realize"
+						+ " that the very existence of this spot seems to be subtly fading in and out. Entropy is increasing.");
+			}
 		}
 		
 		if (row == 4 && column == 3)

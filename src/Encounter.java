@@ -21,7 +21,7 @@ public class Encounter
 	{
 		
 		if (choice == 1) {
-			player = new PlayerCharacter("", 100, 100, 5, 1, 300);
+			player = new PlayerCharacter("", 10, 100, 5, 1, 300);
 			passPlayerCharacter();
 		}
 		else {
@@ -103,6 +103,8 @@ public class Encounter
 		String characterName = scan.nextLine();
 		player.setName(characterName);
 		System.out.println();
+		
+		//Story about vision quest. Entropy. 
 	}
 
 	//Toggle always display player HP
@@ -142,7 +144,9 @@ public class Encounter
 				&& theEncounter.getClass() != Space_Terrain.class) 
 		{
 			
-			boolean victory = combat.battle(player, theEncounter, displayHp, scan);
+			//This is now changed. Victory is determined in individual create classes. 
+			//getLoot() is called in combat class. 
+			boolean victory = combat.battle(player, theEncounter, displayHp, scan, movement);
 			
 			player.equipment.victoryEquip(victory, row, column);	
 		}

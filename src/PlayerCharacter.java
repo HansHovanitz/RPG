@@ -8,6 +8,7 @@ public class PlayerCharacter implements java.io.Serializable
 	protected ItemsConsumable items; 
 	protected ItemsEquipment equipment;
 	protected Description description = new Description();
+	protected int deaths;
 	private String name;
 	private int hp;
 	private int maxHp;
@@ -29,6 +30,7 @@ public class PlayerCharacter implements java.io.Serializable
 		this.damage = damage;
 		this.armor = armor;
 		this.coins = coins;
+		deaths = 0;
 	}
 
 	public String getName()
@@ -157,7 +159,7 @@ public class PlayerCharacter implements java.io.Serializable
 		System.out.println("2. Off");
 		System.out.print("___");
 		int options = scan.nextInt();
-		//System.out.println("");
+		System.out.println("");
 
 		if (options == 1)
 		{
@@ -169,7 +171,7 @@ public class PlayerCharacter implements java.io.Serializable
 		}
 		else
 		{
-			System.out.println("Invalid input. Option set to off.");
+			System.out.println("**Invalid input** Option set to off.");
 			return false;
 		}
 	}
@@ -191,12 +193,32 @@ public class PlayerCharacter implements java.io.Serializable
 		}
 	}
 
-	//Access player equipment and consumables
+	//Access player equipment and consumables.
 	public void passPlayer(PlayerCharacter player)
 	{
 		this.player = player;
 		items = new ItemsConsumable(player);
 		equipment = new ItemsEquipment(player);
+	}
+	
+	public void dead()
+	{
+		System.out.println("\nYou are dead.");
+		for (int i = 0; i < 5; i++)
+		{
+			System.out.print(".  ");
+
+			try{
+				Thread.sleep(1000);
+			}
+			catch (InterruptedException e){
+				System.out.println(e.getMessage());
+			}
+		}
+		System.out.println("You awaken back where your journey began... but you"
+				+ "feel like something has diminished, like a small piece of you"
+				+ "has been left behind.\n");
+		deaths++;
 	}
 }
 

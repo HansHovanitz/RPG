@@ -49,18 +49,15 @@ public class Play
 		int menu = 0;
 		String menuInput;
 
-		do
-		{	
-			if (options && menu <= 4)
-			{
+		do{	
+			if (options && menu <= 4){
 				map.displayMap(movement.getRow(), movement.getColumn());
 				System.out.println();
 			}
 			
 			description.menu();
 			
-			do
-			{
+			do{
 				menuInput = scan.next().trim();
 				menu = setInput(menuInput, description);	
 			}
@@ -77,7 +74,13 @@ public class Play
 				case 4:  movement.setColumn(menu); break;
 				case 5:  map.displayMap(movement.getRow(), movement.getColumn()); break;
 				case 6:  encounter.player.statusScreen(scan); break;
-				case 7:  boolean check = encounter.player.option(scan);
+				case 7:  try {
+					 encounter.save();
+				 }
+				 catch (IOException e) {
+					 System.out.println(e);
+				 } break;
+				case 8:  boolean check = encounter.player.option(scan);
 						 if (check == true) {
 							 encounter.displayHpCheck(true);
 							 options = true;
@@ -86,12 +89,7 @@ public class Play
 							 encounter.displayHpCheck(false);
 							 options = false;
 						 } break;	 
-				case 8:  try {
-							 encounter.save();
-						 }
-						 catch (IOException e) {
-							 System.out.println(e);
-						 } break;
+
 				case 10: //System.out.println("Thanks for playing."); break;
 				//Put a check here to make sure, then exit the program. 
 				default:  break;
@@ -119,8 +117,7 @@ public class Play
 	{
 		int menu = 0;
 		
-		try 
-		{
+		try{
 			if (input.equals("w"))
 				menu = 1;
 			else if (input.equals("s"))
@@ -132,16 +129,13 @@ public class Play
 			else 
 				menu = Integer.parseInt(input);	
 		}
-		catch(NumberFormatException e)
-		{
-			System.out.println("\n***Invalid Input. Please select another option.\n");	
+		catch(NumberFormatException e){
+			System.out.println("\n**Invalid Input** Please select another option.\n");	
 			description.menu();
 		}
-		finally
-		{
-			if (menu > 8 && menu != 10)
-			{
-				System.out.println("\n***Invalid Input. Please select another option.");
+		finally{
+			if (menu > 8 && menu != 10){
+				System.out.println("\n**Invalid Input** Please select another option.");
 			}	
 		}	
 		return menu;

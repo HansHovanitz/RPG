@@ -57,16 +57,17 @@ public class Space_Terrain extends Creature implements MapSpaces
 				{
 					System.out.println("I was able to get you here and heal some of your wounds. Next time you may not be so lucky.");
 					player.setHp(8);
-				}	
+				}
+				//Move player.
+				movement.setRow(4, true);
+				movement.setColumn(3, true);
 			}
 			else
 			{
-				System.out.println("You are dead");
-				//Implement later. 
+				player.dead(); 
+				movement.setRow(0, true);
+				movement.setColumn(0, true);
 			}
-			
-			movement.setRow(4, true);
-			movement.setColumn(3, true);
 		}
 		
 		if (row == 0 && column == 5)
@@ -82,7 +83,6 @@ public class Space_Terrain extends Creature implements MapSpaces
 				System.out.println("What is the answer");
 
 				String question = scan.nextLine();
-
 
 				if (question.equals("answer"))
 				{
