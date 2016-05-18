@@ -15,6 +15,7 @@ public class Creature_FireMage extends Creature implements MapSpaces
 	public Creature doAction(int row, int column, PlayerCharacter player, PlayerMovement movement, Scanner scan)
 	{
 		Creature_FireMage fireMage = new Creature_FireMage();
+		System.out.println("A Fire Mage attacks you!");
 		return fireMage;
 	}
 

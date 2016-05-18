@@ -48,6 +48,14 @@ public class Play
 		boolean options = false;
 		int menu = 0;
 		String menuInput;
+		
+		//Debugging Area
+		//-------------------------------------------
+		
+		movement.setRow(0, true);
+		movement.setColumn(4, true);
+		
+		//-------------------------------------------
 
 		do{	
 			if (options && menu <= 4){

@@ -21,7 +21,7 @@ public class Encounter
 	{
 		
 		if (choice == 1) {
-			player = new PlayerCharacter("", 10, 100, 5, 1, 300);
+			player = new PlayerCharacter("", 100, 100, 5, 1, 300);
 			passPlayerCharacter();
 		}
 		else {
@@ -41,6 +41,7 @@ public class Encounter
 		//System.out.println("time sword added");
 		//player.equipment.timeSword("yes");
 		//player.equipment.plateArmor("yes");
+		//player.equipment.equipmentList("Time Key", "add");
 		
 		//-------------------------------------------	
 	}

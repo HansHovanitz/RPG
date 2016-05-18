@@ -38,13 +38,17 @@ public class Space_Other extends Creature implements MapSpaces
 		{
 			System.out.println("While continuing through the forrest you hear the sound of water getting louder to the East.");
 		}
+		if (row == 1 && column == 3)
+		{
+			//Do Stuff
+		}
 		if (row == 1 && column == 5)
 		{
 			System.out.println("Standing beside the river, you look around to get a sense of direction. To the North a giant looming\n"
-					+ " mountain dominates the skyline. To the South you can see faint hints of what looks to be smoke and steam rising\n"
-					+ ". To the West is more forrest and river lands. To the East the river continues its meandering flow. You are certain\n"
-					+ " that you could continue following the river East forever and never reach its end. That adventure will have to\n"
-					+ " wait for another day."); 
+					+ "mountain dominates the skyline. To the South you can see faint hints of what looks to be smoke and steam rising.\n"
+					+ "To the West is more forrest and river lands. To the East the river continues its meandering flow. You are certain\n"
+					+ "that you could continue following the river East forever and never reach its end. That adventure will have to\n"
+					+ "wait for another day."); 
 		}
 		if (row == 3 && column == 3)
 		{
@@ -75,8 +79,8 @@ public class Space_Other extends Creature implements MapSpaces
 				System.out.println("Thin whips of fog dance eerily on the moist ground as you come into a clearing.\n"
 						+ "This must be the place that you saw in your vision.");
 				//Story for vision quest here.
-				System.out.println("You here a whipser..." + player.getName() + " you must ascend to find answers for the"
-						+ " 'nothing'ness. Find the Bodhisattva... take the key. Confront entropy.");
+				System.out.println("You here a whipser... " + player.getName() + " you must ascend to find answers for the 'nothing'ness. "
+						+ "Find the Bodhisattva... take the key. Confront entropy.");
 				visionSwitch = true;
 			}	
 			else if (!player.equipment.equipmentCheck("Time Key"))
@@ -90,6 +94,7 @@ public class Space_Other extends Creature implements MapSpaces
 			}
 		}
 		
+		//Healer Hut
 		if (row == 4 && column == 3)
 		{
 			int choice;
@@ -97,8 +102,8 @@ public class Space_Other extends Creature implements MapSpaces
 			if (healerSwitch == false)
 			{
 				System.out.println("As you approach a ramshackle hut nestled between a collection of oddly vibrant trees an elderly"
-					+ " man sitting \nin front of the hut seems to take notice of you and slowly rises to his feet. \nHealer: Hello my friend,"
-					+ "stay awhile and listen. I can aid in the healing of your wounds provided you pay me a sum so that I may later"
+					+ " man sitting \nin front of the hut seems to take notice of you and slowly rises to his feet. \nHealer: Hello my friend, "
+					+ "stay awhile and listen. I can aid in the healing of your wounds provided you pay me \na sum so that I may later "
 					+ "replenish my supplies.");
 				
 				healerSwitch = true;
@@ -135,6 +140,7 @@ public class Space_Other extends Creature implements MapSpaces
 	}
 
 
+	//Lock Box helper method 
 	public void lockBox(int row, int column, PlayerCharacter player)
 	{
 		System.out.println("You enter a clearing and find a chest.");

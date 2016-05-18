@@ -6,49 +6,52 @@ public class Combat
 	{
 		Description description = new Description();
 		boolean victory = false;
+		
+		//Special creatures.
+		boolean hydra = false;
+		boolean entropy = false;
+		
+		//Check special creature cases.
+		if (monster.getName().equals("Lava Hydra")){
+			hydra = true;
+		}
+		if (monster.getName().equals("Entropy")){
+			entropy = true;
+		}
+		
 		do
 		{
 			description.combatMenu();
 			String scroll = "";
 			int block = 1;
 			boolean loopAgain = false;
-			boolean hydra = false;
-			
-			//Check special creature cases.
-			if (monster.getName().equals("Lava Hydra"))
-			{
-				hydra = true;
-			}
 			
 			int action = scan.nextInt();
 			System.out.println();
 
 			switch (action)
 			{
-				case 1: if (hydra)
-						{				
+				case 1: if (hydra){				
 							((Creature_LavaHydra) monster).battleHydra(player, (Creature_LavaHydra) monster, scan); break;
 						}
-						else 
-						{
+						else if (entropy) {
+							
+						}
+						else {
 							monster.setHp(monster.getHp() - player.playerCombat(monster.getName())); break;
 						}
-				case 2: if (player.equipment.equipmentCheck("Shield"))
-						{
+				case 2: if (player.equipment.equipmentCheck("Shield")){
 							block = 2;
 						}
-						else
-						{
+						else {
 							System.out.println("You have no shield to block with!");	
 						}
 						break;
 				case 3: scroll = player.items.useConsumableItem("inCombat", scan);
-						if (scroll.equals("fire") || scroll.equals("ice"))
-						{
+						if (scroll.equals("fire") || scroll.equals("ice")){
 							monster.setHp(monster.getHp() - player.scrollCombat(monster.getName(), monster.weakness(scroll)));
 						}
-						if (scroll.equals("return"))
-						{
+						if (scroll.equals("return")){
 							loopAgain = true;
 						}
 						break;

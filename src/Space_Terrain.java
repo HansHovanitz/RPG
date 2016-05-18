@@ -64,6 +64,7 @@ public class Space_Terrain extends Creature implements MapSpaces
 			}
 			else
 			{
+				//Player is dead.
 				player.dead(); 
 				movement.setRow(0, true);
 				movement.setColumn(0, true);
@@ -80,6 +81,7 @@ public class Space_Terrain extends Creature implements MapSpaces
 				
 				
 				//bodhisattva story here
+				
 				System.out.println("What is the answer");
 
 				String question = scan.nextLine();
@@ -120,7 +122,7 @@ public class Space_Terrain extends Creature implements MapSpaces
 		//Entrance to final area here
 		if (row == 5 && column == 4)
 		{
-			System.out.println("A mighty door stands here");
+			System.out.println("A mighty door stands here.");
 			if (player.equipment.equipmentCheck("Time Key"))
 			{
 				System.out.println("You may pass.");
