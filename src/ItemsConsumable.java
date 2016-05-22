@@ -238,24 +238,4 @@ public class ItemsConsumable implements java.io.Serializable
 			}
 			return counter;
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

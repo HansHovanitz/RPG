@@ -36,8 +36,10 @@ public class Encounter
 		//Debugging Area
 		//-------------------------------------------
 		
-		//System.out.println("ice scroll added");
-		//player.items.scrolls("addIce");
+		System.out.println("ice scroll added");
+		player.items.scrolls("addIce");
+		player.items.scrolls("addIce");
+		player.items.scrolls("addFire");
 		//System.out.println("time sword added");
 		//player.equipment.timeSword("yes");
 		//player.equipment.plateArmor("yes");

@@ -52,8 +52,8 @@ public class Play
 		//Debugging Area
 		//-------------------------------------------
 		
-		movement.setRow(0, true);
-		movement.setColumn(4, true);
+		//movement.setRow(0, true);
+		//movement.setColumn(4, true);
 		
 		//-------------------------------------------
 

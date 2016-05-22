@@ -22,7 +22,7 @@ public class Combat
 		do
 		{
 			description.combatMenu();
-			String scroll = "";
+			String scroll = "empty";
 			int block = 1;
 			boolean loopAgain = false;
 			
@@ -32,10 +32,10 @@ public class Combat
 			switch (action)
 			{
 				case 1: if (hydra){				
-							((Creature_LavaHydra) monster).battleHydra(player, (Creature_LavaHydra) monster, scan); break;
+							((Creature_LavaHydra) monster).battleHydra(player, (Creature_LavaHydra) monster, scan, 1, scroll); break;
 						}
 						else if (entropy) {
-							
+							((Creature_Entropy) monster).battleEntropy(player, (Creature_Entropy) monster, scan, 1, scroll); break;			
 						}
 						else {
 							monster.setHp(monster.getHp() - player.playerCombat(monster.getName())); break;
@@ -49,11 +49,22 @@ public class Combat
 						break;
 				case 3: scroll = player.items.useConsumableItem("inCombat", scan);
 						if (scroll.equals("fire") || scroll.equals("ice")){
-							monster.setHp(monster.getHp() - player.scrollCombat(monster.getName(), monster.weakness(scroll)));
+							if (hydra){
+								((Creature_LavaHydra) monster).battleHydra(player, (Creature_LavaHydra) monster, scan, 2, scroll); break;
+							}
+							else if (entropy && ((Creature_Entropy) monster).getForm()==2){
+								System.out.println("You can't seem to focus on any one of the parts well enough to cast your scroll.");
+								//((Creature_Entropy) monster).battleEntropy(player, (Creature_Entropy) monster, scan, 2, scroll); break;
+							}
+							else {
+								monster.setHp(monster.getHp() - player.scrollCombat(monster.getName(), monster.weakness(scroll)));
+								break;
+							}	
 						}
 						if (scroll.equals("return")){
 							loopAgain = true;
 						}
+						System.out.println("test");
 						break;
 				case 4: System.out.println("Health Points: " + player.getHp() + "/" + player.getMaxHp());
 						loopAgain = true;

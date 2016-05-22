@@ -87,7 +87,7 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 	}
 	
 	//Implement 3 heads. 
-	public void battleHydra(PlayerCharacter player, Creature_LavaHydra monster, Scanner scan)
+	public void battleHydra(PlayerCharacter player, Creature_LavaHydra monster, Scanner scan, int attackType, String scroll)
 	{
 		int head = 0;
 		boolean miss = false;
@@ -110,38 +110,108 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 		
 		System.out.println("");
 		
-		if (miss == true)
+		if (miss == true && attackType == 1)
 		{
 			System.out.println("You swing at the air and, not to your surprise, don't hit anything.");
 		}
+		else if (miss == true && attackType == 2)
+		{
+			System.out.println("While preparing to cast the scroll you lose concentration and nothing happens.");
+		}
 		else
 		{
-			int playerDamage = player.getDamage();
-			
-			if (head == 1)
+			if (attackType == 1)
 			{
-				heads[0] -= playerDamage; 
-				System.out.println("You strike the Hydra's left head for " + playerDamage + " damage!");
-				headHelper(heads[0]);
+				int playerDamage = player.getDamage();
+				
+				if (head == 1)
+				{
+					if (heads[0] <= 0)
+					{
+						done();
+					}
+					else 
+					{
+						heads[0] -= playerDamage; 
+						System.out.println("You strike the Hydra's left head for " + playerDamage + " damage!");
+						headHelper(heads[0], attackType);
+					}
+				}
+				if (head == 2)
+				{
+					if (heads[1] <= 0)
+					{
+						done();
+					}
+					else 
+					{
+						heads[1] -= playerDamage;
+						System.out.println("You strike the Hydra's middle head for " + playerDamage + " damage!");
+						headHelper(heads[1], attackType);
+					}
+				}
+				if (head == 3)
+				{
+					if (heads[2] <= 0)
+					{
+						done();
+					}
+					else 
+					{
+						heads[2] -= playerDamage;
+						System.out.println("You strike the Hydra's right head for " + playerDamage + " damage!");
+						headHelper(heads[2], attackType);
+					}
+				}
 			}
-			if (head == 2)
+			if (attackType == 2)
 			{
-				heads[1] -= playerDamage;
-				System.out.println("You strike the Hydra's middle head for " + playerDamage + " damage!");
-				headHelper(heads[1]);
+				int scrollDamage = player.scrollCombat(monster.getName(), monster.weakness(scroll));
+				
+				if (head == 1)
+				{
+					if (heads[0] <= 0)
+					{
+						done();
+					}
+					else
+					{
+						heads[0] -= scrollDamage; 
+						headHelper(heads[0], attackType);	
+					}
+				}
+				if (head == 2)
+				{
+					if (heads[1] <= 0)
+					{
+						done();
+					}
+					else 
+					{
+						heads[1] -= scrollDamage;
+						headHelper(heads[1], attackType);
+					}
+				}
+				if (head == 3)
+				{
+					if (heads[2] <= 0)
+					{
+						done();
+					}
+					else
+					{
+						heads[2] -= scrollDamage;
+						headHelper(heads[2], attackType);
+					}
+				}
 			}
-			if (head == 3)
-			{
-				heads[2] -= playerDamage;
-				System.out.println("You strike the Hydra's right head for " + playerDamage + " damage!");
-				headHelper(heads[2]);
-			}
-			
+
+			//**********************************
 			//Debug
 			//System.out.println(heads[0]);
 			//System.out.println(heads[1]);
 			//System.out.println(heads[2]);
-			
+			//**********************************
 			
 			//Regenerate hydra heads
 			int headCheck = 0;
@@ -199,7 +269,7 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 		}
 	}
 	
-	public void headHelper(int damageDone)
+	public void headHelper(int damageDone, int attackType)
 	{
 		if (damageDone > 15)
 		{
@@ -211,9 +281,22 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 		}
 		else
 		{
-			System.out.println("You cut off the hydra's head!");
+			if (attackType == 1)
+			{
+				System.out.println("You cut off the hydra's head!");
+			}
+			else
+			{
+				System.out.println("The hydra's head explodes!");
+			}
+			
 		}
 		System.out.println("");
+	}
+	
+	public void done()
+	{
+		System.out.println("This already lays motionless");
 	}
 	
 	public void getLoot(PlayerCharacter player)

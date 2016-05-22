@@ -106,9 +106,9 @@ public class PlayerCharacter implements java.io.Serializable
 
 	public int scrollCombat(String creature, int weakness)
 	{
-		int basicScrollDamage = 15;
-		int fireDamage = 25;
-		int iceDamage = 25;
+		int basicScrollDamage = 10;
+		int fireDamage = 20;
+		int iceDamage = 20;
 
 		if (weakness == 1)
 		{
@@ -123,7 +123,7 @@ public class PlayerCharacter implements java.io.Serializable
 		}
 		else
 		{
-			System.out.println("\nYou hit the " + creature + " for " + basicScrollDamage + " damage!");
+			System.out.println("\nYour spell hits the " + creature + " for " + basicScrollDamage + " damage!");
 			return basicScrollDamage;
 		}
 	}
