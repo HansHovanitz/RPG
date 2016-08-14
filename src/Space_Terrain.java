@@ -33,13 +33,11 @@ public class Space_Terrain extends Creature implements MapSpaces
 			{
 				System.out.print(".  ");
 
-				try
-				{
+				try {
 					Thread.sleep(500);
 				}
 
-				catch (InterruptedException e)
-				{
+				catch (InterruptedException e) {
 					System.out.println(e.getMessage());
 				}
 			}
@@ -77,22 +75,39 @@ public class Space_Terrain extends Creature implements MapSpaces
 
 			if (player.equipment.equipmentCheck("Rope"))
 			{
+				//FINISH STORY HERE
 				System.out.println("You use your rope to help you scale the mountain.");
 				
+				//Bodhisattva
+				System.out.println("Bodhisattva:  ");
 				
-				//bodhisattva story here
-				
-				System.out.println("What is the answer");
+				System.out.println("What is the answer?");
 
-				String question = scan.nextLine();
+				String question = scan.nextLine().toLowerCase();
 
-				if (question.equals("answer"))
+				if (question.equals("nothing"))
 				{
 					player.equipment.equipmentList("Time Key", "add");
 				}
 				else
 				{
-					System.out.println("WRONG, back down the mountain with you");
+					//Write story. 
+					System.out.println("Bodhisattva: I'm sorry " + player.getName() + " " + question + " is not correct.\nI can see you "
+							+"must ponder this question further.");
+					for (int i = 0; i < 3; i++)
+					{
+						System.out.print(".  ");
+
+						try {
+							Thread.sleep(500);
+						}
+
+						catch (InterruptedException e) {
+							System.out.println(e.getMessage());
+						}
+					}
+					System.out.println("Before you can finish thinking about what the Bodhisattva said he closes his eyes and mutters "
+							+ "something in a long forgotten tongue. You then find yourself back at the base of the mountain.");
 					movement.setRow(6, true);
 					movement.setColumn(5, true);
 				}
@@ -112,7 +127,6 @@ public class Space_Terrain extends Creature implements MapSpaces
 				System.out.println("You begin to make your way up the mountain but it soon becomes apparent that "
 						+ "this was a poor life choice.\nThe rocks are too slippery. As you tumble down the mountain "
 						+ "you think to yourself that there must be a\nbetter way to approach this situation.");
-				System.out.println("YOU FALL IN THE RIVER");
 				movement.setRow(6, true);
 				movement.setColumn(3, true);
 
@@ -147,11 +161,10 @@ public class Space_Terrain extends Creature implements MapSpaces
 			}
 			else
 			{
-				System.out.println("No key");
+				System.out.println("You do not possess the Time Key. You will need this item to enter the entropy door.");
 				movement.setRow(5, true);
 				movement.setColumn(4, true);
-			}
-			
+			}	
 		}
 		return terrain;
 	}

@@ -43,6 +43,7 @@ public class Description implements Serializable
 		System.out.println("6. See My Status");
 		System.out.println("7. Save Character");
 		System.out.println("8. Options");
+		System.out.println("9. Quit");
 		System.out.print("___");
 	}
 

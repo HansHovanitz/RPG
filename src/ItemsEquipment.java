@@ -120,10 +120,6 @@ public class ItemsEquipment implements java.io.Serializable
 				}
 			}		
 		}
-		
-
-
-
 
 		public void sword(String item)
 		{
@@ -181,7 +177,6 @@ public class ItemsEquipment implements java.io.Serializable
 				equipmentList("Time Sword", "remove");
 			}
 		}
-
 
 		public void leatherArmor(String item)
 		{
@@ -242,6 +237,15 @@ public class ItemsEquipment implements java.io.Serializable
 			}
 		}
 		
+		public void creationCube(String item)
+		{
+			if (item.equals("true"))
+			{
+				equipmentList("Creation Cube", "add");
+			}
+			
+		}
+		
 		public void playerResist(String resistType)
 		{
 			if (resistType.equals("fire"))
@@ -253,5 +257,7 @@ public class ItemsEquipment implements java.io.Serializable
 				player.setResist("removeFire");
 			}
 		}
+		
+
 
 }

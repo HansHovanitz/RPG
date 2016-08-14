@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Space_Other extends Creature implements MapSpaces
@@ -79,13 +80,13 @@ public class Space_Other extends Creature implements MapSpaces
 				System.out.println("Thin whips of fog dance eerily on the moist ground as you come into a clearing.\n"
 						+ "This must be the place that you saw in your vision.");
 				//Story for vision quest here.
-				System.out.println("You here a whipser... " + player.getName() + " you must ascend to find answers for the 'nothing'ness. "
+				System.out.println("You hear a whipser... " + player.getName() + " you must ascend to find answers for the 'nothing'ness. "
 						+ "Find the Bodhisattva... take the key. Confront entropy.");
 				visionSwitch = true;
 			}	
 			else if (!player.equipment.equipmentCheck("Time Key"))
 			{
-				System.out.println("The clearing is clear and still. /nYou must ascent the mountain to find the Bodhisattva.");
+				System.out.println("The clearing is clear and still. /nYou must ascend the mountain to find the Bodhisattva.");
 			}
 			else 
 			{
@@ -97,7 +98,7 @@ public class Space_Other extends Creature implements MapSpaces
 		//Healer Hut
 		if (row == 4 && column == 3)
 		{
-			int choice;
+			int choice = -1;
 		
 			if (healerSwitch == false)
 			{
@@ -114,7 +115,13 @@ public class Space_Other extends Creature implements MapSpaces
 			}
 			
 			description.healerMenu();
-			choice = scan.nextInt();
+			
+			try {
+				choice = scan.nextInt();
+			}
+			catch (InputMismatchException e) {
+				System.out.println("Healer: I'm sorry I do not understand what you mean.");
+			}
 			
 			switch (choice)
 			{

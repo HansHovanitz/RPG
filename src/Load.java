@@ -75,6 +75,9 @@ public class Load {
 	            if (attempts == 3)
 	            {
 	            	System.out.println("\nDefault character loaded.\n");
+	            	//Create default player.
+	            	player = new PlayerCharacter("", 100, 100, 5, 1, 300);
+	            	player.passPlayer(player);
 	            	exit = true;
 	            }
 	        }	

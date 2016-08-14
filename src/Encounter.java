@@ -25,7 +25,6 @@ public class Encounter
 			passPlayerCharacter();
 		}
 		else {
-			//have load() return an int. if int isn't 1 loop and ask for another save file. 
 			load();
 		}
 		spaces = new MapSpaces[6][6];
@@ -35,11 +34,13 @@ public class Encounter
 		
 		//Debugging Area
 		//-------------------------------------------
-		
+		System.out.println(player.getHp());
 		System.out.println("ice scroll added");
 		player.items.scrolls("addIce");
 		player.items.scrolls("addIce");
 		player.items.scrolls("addFire");
+		//System.out.println("added creation cube");
+		//player.equipment.creationCube("true");
 		//System.out.println("time sword added");
 		//player.equipment.timeSword("yes");
 		//player.equipment.plateArmor("yes");
@@ -99,7 +100,7 @@ public class Encounter
 		spaces[5][5] = new Space_Terrain();   
 	}
 
-	//Gather player information
+	//Gather player information.
 	public void start()
 	{
 		System.out.println("What is your name?");
@@ -108,6 +109,12 @@ public class Encounter
 		System.out.println();
 		
 		//Story about vision quest. Entropy. 
+	}
+	
+	//Check to see if the game is complete. 
+	public boolean end()
+	{
+		return player.equipment.equipmentCheck("Creation Cube");
 	}
 
 	//Toggle always display player HP
@@ -152,6 +159,8 @@ public class Encounter
 			boolean victory = combat.battle(player, theEncounter, displayHp, scan, movement);
 			
 			player.equipment.victoryEquip(victory, row, column);	
+			
+
 		}
 	}
 	

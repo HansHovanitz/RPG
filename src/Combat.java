@@ -98,14 +98,11 @@ public class Combat
 		else
 		{
 			victory = false;
+			//Player is dead. Move back to beginning.
 			player.dead();
 			movement.setRow(0, true);
 			movement.setColumn(0, true);
-
-
-			//call dead method (which play() checks
 		}
-		//scanner.close();
 		return victory;
 	}
 }

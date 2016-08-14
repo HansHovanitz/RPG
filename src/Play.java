@@ -1,26 +1,32 @@
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Play
 {
 	public static void main (String [] args) throws IOException 
 	{
-		int choice;
-		Scanner scan;
-		do
-		{
-			System.out.println("1.New Game \n2.Load Character \n3.Quit");
-			scan = new Scanner(System.in);
-			choice = scan.nextInt();
-			if (choice != 3)
-			{
-				play(choice, scan);
-			}
-		} while (choice != 3);
-		System.out.println("Thanks for playing.");
-		scan.close();
-		//Program ends. 
+	    int choice = 1;
+	    Scanner scan = new Scanner(System.in);
+	    do
+	    {
+	        try {
+	            System.out.println("1.New Game \n2.Load Character \n3.Quit");
+	            choice = scan.nextInt();
+	            if (choice > 0 && choice < 3)
+	            {
+	                play(choice, scan);
+	            }
+	        }
+	        catch (InputMismatchException e) {
+	        	scan.next();
+	            System.out.println("Invalid Input\n");
+	        }
+	    } while (choice != 3);
+	    System.out.println("Thanks for playing.");
+	    scan.close();
+	    //Program ends. 
 	}
 
 	public static void play(int choice, Scanner scan) throws IOException
@@ -46,6 +52,7 @@ public class Play
 		}
 		
 		boolean options = false;
+		boolean finishedGame = false; 
 		int menu = 0;
 		String menuInput;
 		
@@ -58,7 +65,7 @@ public class Play
 		//-------------------------------------------
 
 		do{	
-			if (options && menu <= 4){
+			if (options && menu <= 4 && menu >= 1){
 				map.displayMap(movement.getRow(), movement.getColumn());
 				System.out.println();
 			}
@@ -98,15 +105,15 @@ public class Play
 							 options = false;
 						 } break;	 
 
-				case 10: //System.out.println("Thanks for playing."); break;
-				//Put a check here to make sure, then exit the program. 
+				case 9:  System.out.println("Are you sure you want to abandon your quest? Yes or No?");
+						 String confirm = scan.next().toLowerCase();
+						 if (confirm.equals("yes")) {
+							 finishedGame = true;
+						 } break;
 				default:  break;
 			}
 			
-			//Debug
-			//System.out.println(menu);
-			
-			if (menu < 8 && menu != 10)
+			if (menu < 8 && menu > 0)
 			{
 				map.updateMap(movement.getRow(), movement.getColumn());
 				if (movement.getWallCheck() == false && menu < 5)
@@ -115,10 +122,14 @@ public class Play
 				}
 				System.out.println();
 			}
+			
+			//Check to see if game is over. 
+			if (finishedGame == false)
+			{
+				finishedGame = encounter.end();
+			}	
 		}
-		//Implement quit later.
-		while (menu != 10);
-		//scan.close();
+		while (!finishedGame);
 	}
 	
 	public static int setInput(String input, Description description)
@@ -142,7 +153,7 @@ public class Play
 			description.menu();
 		}
 		finally{
-			if (menu > 8 && menu != 10){
+			if (menu > 9 || menu < 1){
 				System.out.println("\n**Invalid Input** Please select another option.");
 			}	
 		}	

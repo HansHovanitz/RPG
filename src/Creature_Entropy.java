@@ -38,6 +38,10 @@ public class Creature_Entropy extends Creature implements MapSpaces
 			
 		}
 		
+		
+		//Ends the game. 
+		monster.setHp(0);
+		
 	}
 	
 	
@@ -45,7 +49,11 @@ public class Creature_Entropy extends Creature implements MapSpaces
 	
 	
 	
-	
+	public void getLoot(PlayerCharacter player)
+	{
+		//Creation Cube used to check condition for end of game. 
+		player.equipment.creationCube("true");
+	}
 	
 
 	

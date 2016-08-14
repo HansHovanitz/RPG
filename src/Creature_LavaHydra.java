@@ -118,6 +118,77 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 		{
 			System.out.println("While preparing to cast the scroll you lose concentration and nothing happens.");
 		}
+		
+		else
+		{
+			int playerDamage = player.getDamage();
+			int scrollDamage = 0;
+			if (attackType == 2) 
+			{
+				scrollDamage = player.scrollCombat(monster.getName(), monster.weakness(scroll));
+			}
+					
+			if (head == 1)
+			{
+				if (heads[0] <= 0)
+				{
+					done();
+				}
+				else 
+				{	
+					if (attackType == 1) {
+						heads[0] -= playerDamage; 
+						System.out.println("You strike the Hydra's left head for " + playerDamage + " damage!");
+					}
+					else
+					{
+						heads[0] -= scrollDamage; 
+					}	
+					headHelper(heads[0], attackType);
+				}
+			}
+			if (head == 2) 
+			{
+				if (heads[1] <= 0) 
+				{
+					done();
+				}
+				else 
+				{
+					if (attackType == 1) 
+					{
+						heads[1] -= playerDamage;
+						System.out.println("You strike the Hydra's middle head for " + playerDamage + " damage!");
+					}
+					else 
+					{
+						heads[1] -= scrollDamage; 
+					}
+					headHelper(heads[1], attackType);
+				}
+			}
+			if (head == 3)
+			{
+				if (heads[2] <= 0)
+				{
+					done();
+				}
+				else 
+				{
+					if (attackType == 1)
+					{
+						heads[2] -= playerDamage;
+						System.out.println("You strike the Hydra's right head for " + playerDamage + " damage!");
+					}
+					else 
+					{
+						heads[2] -= scrollDamage;
+					}
+					headHelper(heads[2], attackType);
+				}
+			}
+		
+		/*
 		else
 		{
 			if (attackType == 1)
@@ -205,6 +276,7 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 					}
 				}
 			}
+			*/
 
 			//**********************************
 			//Debug
@@ -301,11 +373,7 @@ public class Creature_LavaHydra extends Creature implements MapSpaces
 	
 	public void getLoot(PlayerCharacter player)
 	{
-		if (player.equipment.equipmentCheck("Time Sword"))
-		{
-			//Already have time sword
-		}
-		else
+		if (!player.equipment.equipmentCheck("Time Sword"))
 		{
 			player.equipment.timeSword("yes");
 			System.out.println("After the hydra has collapsed and you are sure there is no more immediate danger, +"
