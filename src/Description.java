@@ -8,8 +8,8 @@ public class Description implements Serializable
 {
 	Scanner scan;
 	
-	public Description ()
-	{
+	public Description () {
+		//Default Constructor. 
 	}
 
 	public void enterRoom(){

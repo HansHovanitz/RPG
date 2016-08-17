@@ -19,7 +19,6 @@ public class Encounter
 	
 	public Encounter(int choice) throws IOException
 	{
-		
 		if (choice == 1) {
 			player = new PlayerCharacter("", 100, 100, 5, 1, 300);
 			passPlayerCharacter();
@@ -117,7 +116,7 @@ public class Encounter
 		return player.equipment.equipmentCheck("Creation Cube");
 	}
 
-	//Toggle always display player HP
+	//Toggle always display player HP.
 	public void displayHpCheck(boolean check)
 	{
 		if (check == true)
@@ -130,7 +129,7 @@ public class Encounter
 		}
 	}
 
-	//Player encounters a map space
+	//Player encounters a map space.
 	public void room(int row, int column, PlayerMovement movement, Scanner scan)
 	{
 
