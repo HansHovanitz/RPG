@@ -86,7 +86,8 @@ public class Space_Other extends Creature implements MapSpaces
 			}	
 			else if (!player.equipment.equipmentCheck("Time Key"))
 			{
-				System.out.println("The clearing is clear and still. /nYou must ascend the mountain to find the Bodhisattva.");
+				System.out.println("The clearing is clear and still. /nToo still... as if life itself has faded from this area.\n"
+					+ "You must hurry to the Chronos Gate in the SouthEast before it is too late.");
 			}
 			else 
 			{

@@ -7,9 +7,25 @@ import java.util.Scanner;
 public class Description implements Serializable
 {
 	Scanner scan;
+	ArrayList<String> hints;
 	
 	public Description () {
-		//Default Constructor. 
+		hints = populateHints();
+	}
+
+	public ArrayList<String> populateHints() {
+		ArrayList<String> buildHints = new ArrayList<String>;
+		String hintOne = "I hear trolls might be vulnderable to fire...";
+		buildHints.add(hintOne);
+		String hintTwo = "Legend speaks of a great icy beast in the distant SouthWest that possesses a relic of great power.";
+		buildHints.add(hintTwo);
+		String hintThree = "The hammers I sell aren't just used for building things."
+		buildHints.add(hintThree);
+		String hintFour = "";
+		buildHints.add(hintFour);
+
+
+
 	}
 
 	public void enterRoom(){
@@ -105,6 +121,8 @@ public class Description implements Serializable
 	}
 
 	public void hints(){
+		//randomly pick a number the length of the hints array and then output that index
+
 
 	}
 	

@@ -95,7 +95,7 @@ public class Space_Terrain extends Creature implements MapSpaces
 							+ "to indeed save this world you will need to use your mind as well as a sword. I will give you the Time Key. "
 							+ "It will allow you to pass through the Door of Chronos and confront entropy before it makes its way to this "
 							+ "world and devours it. The Door of Chronos lies far to the south. On your journey there you may come across "
-							+ "rivers of lava. Somewhere in that area lives an ancient beat -- a lava hydra. It is said that the hydra "
+							+ "rivers of lava. Somewhere in that area lives an ancient beast -- a lava hydra. It is said that the hydra "
 							+ "guards a 'Time Sword'. It is not necessary to face Entropy with the Time Sword, but it will surley help "
 							+ "you. Good luck " + player.getName() + ".");
 					player.equipment.equipmentList("Time Key", "add");
